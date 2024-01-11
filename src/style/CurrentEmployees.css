@@ -1,0 +1,38 @@
+.mainCE {
+  display: flex;
+  flex-direction: column;
+  font-family: "Jost", sans-serif;
+  font-size: 1rem;
+  max-width: 1440px;
+  padding-top: 3rem;
+  min-height: calc(100vh - 16rem);
+}
+
+#entriesNSearchContainer,
+#infosNPaginationContainer {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+#entriesNSearchContainer {
+  margin-bottom: 0.5rem;
+}
+
+#infosNPaginationContainer {
+  margin-top: 0.25rem;
+}
+
+.mainCE input[type="text"] {
+  border: 1px solid #c5c5c5;
+  background: #f6f6f6;
+  padding: 0.5em 1em 0.45em 1em;
+  color: #454545;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1em;
+}
+
+#infosContainer {
+  display: flex;
+  align-items: center;
+}

@@ -1,0 +1,89 @@
+#root {
+  width: 100%;
+  /*margin: 0 auto;*/
+  /*padding: 2rem 0 6rem 0;*/
+  /*padding: 0 0 6rem 0;*/
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  align-items: center;
+}
+
+a {
+  display: block;
+  font-family: "Jost", sans-serif;
+  font-size: 1rem;
+  text-align: center;
+  width: 100%;
+}
+
+/*.mainform {
+  display: flex;
+  flex-direction: column;
+  width: 360px;
+  font-family: "Jost", sans-serif;
+  font-size: 1rem;
+}*/
+
+main {
+  width: 100%;
+  max-width: 1440px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+main input[type="text"],
+main input[type="number"],
+main input[type="date"] {
+  border: 1px solid #c5c5c5;
+  background: #f6f6f6;
+  padding: 0.5em 0.6em 0.45em 0.6em;
+  color: #454545;
+  font-family: "Jost", sans-serif;
+  font-size: 1rem;
+  /*font-family: Arial, Helvetica, sans-serif;*/
+  margin-top: 0.325rem;
+}
+
+main input[type="submit"] {
+  margin-top: 2.325rem;
+  /*height: 32px;*/
+  font-family: "Jost", sans-serif;
+  font-size: 1rem;
+  padding: 0.5em 0.6em 0.45em 0.6em;
+  background: linear-gradient(to bottom, #fff 0%, #dcdcdc 100%);
+  border: 1px solid #979797;
+  cursor: pointer;
+}
+
+main input[type="submit"]:hover {
+  background: #0078d7;
+  border: 1px solid #0078d7;
+  color: #fff;
+  font-weight: 600;
+  box-shadow: 0 4px 8px #72aedf;
+}
+
+label.defaultSpacing {
+  margin-top: 1rem;
+}
+
+main input:focus {
+  outline: 1px solid #0078d7;
+}
+
+dialog::backdrop {
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.errorMessage {
+  display: flex;
+  color: rgb(121, 43, 63);
+  height: 2.5rem;
+  align-items: center;
+  background-color: rgb(243, 239, 240);
+  margin-top: 4px;
+  padding-left: 0.75rem;
+  border: 1px solid rgb(121, 43, 63);
+}
