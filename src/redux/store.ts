@@ -3,7 +3,7 @@ import employeesReducer from './employeesSlice'
 
 export const store = configureStore({
     reducer: {
-        messaging : employeesReducer,
+        employees : employeesReducer,
     },
     devTools : true,
   })

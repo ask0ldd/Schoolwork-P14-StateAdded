@@ -4,10 +4,9 @@ import '../style/CurrentEmployees.css'
 import DatasTable from '../components/DatasTable/DatasTable'
 import { ColumnBuilder } from '../components/DatasTable/builders/ColumnBuilder'
 import { TableModel } from '../components/DatasTable/models/TableModel'
-import { useContext } from 'react'
-import { EmployeesContext } from '../contexts/EmployeesContext'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
+import { useTypedSelector } from '../redux/hook/typedHooks'
 
 /**
  * Component : Displaying the current employees datatable page.
@@ -15,7 +14,8 @@ import Footer from '../components/Footer'
  * @return ( <CurrentEmployees/> )
  */
 function CurrentEmployees() {
-  const {employeesList} = useContext(EmployeesContext);
+  // const {employeesList} = useContext(EmployeesContext);
+  const employeesList  = useTypedSelector((state) => state.employees.employees)
 
   const tableModel = new TableModel({id : "current_employees"})
   tableModel.addColumn(new ColumnBuilder().setColumnName("First Name").setDatatypeAsString().setAccessor("firstName").setSortability(true).build())

@@ -1,14 +1,15 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { useContext, useMemo, useRef, useState } from "react"
+import { useMemo, useRef, useState } from "react"
 import CustomSelect from "./CustomSelect/CustomSelect"
 import DatePicker from "./DatePicker/DatePicker"
 import FormInput, { IFormGroup } from "./FormInput/FormInput"
 import Validator from "../services/validators"
 import { FormGroup } from "./FormGroup"
-import { EmployeesContext } from "../contexts/EmployeesContext"
 import { IModalManager } from "./Modal/hooks/useModalManager"
 import '../style/CustomForm.css'
 import { FieldBuilder } from "./FieldBuilder"
+import { useTypedDispatch, useTypedSelector } from "../redux/hook/typedHooks"
+import { addEmployee } from "../redux/employeesSlice"
 
 /**
  * Component : Form.
@@ -18,6 +19,9 @@ import { FieldBuilder } from "./FieldBuilder"
  * @return ( <CustomForm modalManager={modalManager}/> )
  */
 function CustomForm({modalManager} : {modalManager : IModalManager} ){
+
+  const dispatch = useTypedDispatch()
+  const employeesList  = useTypedSelector((state) => state.employees.employees)
 
   const initialFormGroup = useMemo(() => 
     new FormGroup()
@@ -41,7 +45,7 @@ function CustomForm({modalManager} : {modalManager : IModalManager} ){
     _setFormGroupState(state)
   }
 
-  const {employeesList, setEmployeesList} = useContext(EmployeesContext)
+  // const {employeesList, setEmployeesList} = useContext(EmployeesContext)
 
   /**
    * Handle form submission
@@ -68,7 +72,8 @@ function CustomForm({modalManager} : {modalManager : IModalManager} ){
       }
       // verify if the new employee is unknown
       if(isEmployeeAlreadyInContext(newEmployee)) return
-      setEmployeesList([...employeesList, newEmployee])
+      // setEmployeesList([...employeesList, newEmployee])
+      dispatch(addEmployee({employee : newEmployee}))
       modalManager.displayModalPreset("default")
       return 
     }
