@@ -14,7 +14,7 @@ function CustomRouter() {
     
     return(
         <Provider store={store}>
-            <Router basename="/P14-JQuery2ReactPluginsConversion/">
+            <Router basename="/Schoolwork-P14-StateAdded/">
                 <Routes>
                     <Route path="/" element={<App />} />
                     <Route path="/employee-list" element={<CurrentEmployees />} />

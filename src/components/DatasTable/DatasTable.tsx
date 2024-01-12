@@ -48,7 +48,7 @@ function DatasTable({tableModel, tableDatas, preset} : IProps){
         <>
             { isColumnsDefinitionMatchingDatas ? 
                 // providing model, datas & dispatch fn to the children components
-                <DatasTableContext.Provider value={{tableModel, dispatch, tableState}}>
+                <DatasTableContext.Provider value={{tableModel, dispatch, tableState, preset : preset}}>
                     <div id="entriesNSearchContainer">
                         <NDisplayedSelect/>
                         <SearchModule/>
