@@ -10,6 +10,7 @@ import { useMemo } from 'react'
 import { TableModel } from './models/TableModel'
 import useTableManager from './hooks/useTableManager'
 import { DatasTableContext } from './DatasTableContext'
+import { IPreset } from './interfaces/IPreset'
 
 /**
  * Component : Grouping of all the constitutive elements of a datatable.
@@ -24,7 +25,7 @@ import { DatasTableContext } from './DatasTableContext'
  * @param {Object[]} props.tableDatas - Datas used to populate the table.
  * @return ( <DatasTable tableModel={tableModel} tableDatas={tableDatas}/> )
  */
-function DatasTable({tableModel, tableDatas} : IProps){
+function DatasTable({tableModel, tableDatas, preset} : IProps){
 
     // [perfs] tableModel & tableDatas props already triggering a re-render (being props), so no need of useState
     const isColumnsDefinitionMatchingDatas = useMemo(() => {
@@ -70,4 +71,5 @@ export default DatasTable
 interface IProps {
     tableModel : TableModel
     tableDatas : Array<any>
+    preset : IPreset
 }

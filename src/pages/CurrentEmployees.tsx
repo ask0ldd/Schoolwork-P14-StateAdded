@@ -35,7 +35,7 @@ function CurrentEmployees() {
     <>
       <Header pageTitle='Current Employees'/>
       <main className='mainCE'>
-        <DatasTable tableModel={tableModel} tableDatas={employeesList}/>
+        <DatasTable tableModel={tableModel} tableDatas={employeesList} preset={preset}/>
       </main>
       <Footer/>
     </>
