@@ -1,4 +1,7 @@
-const darkPreset = {
+import { IPreset } from "../interfaces/IPreset";
+
+/* eslint-disable @typescript-eslint/no-unused-vars */
+export const darkPreset : IPreset = {
     global :{
         font : "Jost",
         textColor : "#FFFFFF",
