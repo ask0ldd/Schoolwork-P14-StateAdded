@@ -4,29 +4,29 @@ import { IPreset } from "../interfaces/IPreset";
 export const darkPreset : IPreset = {
     global :{
         font : "Jost",
-        textColor : "#FFFFFF",
+        textColor : "#7D769B",
     },
     th : {
-        textColor : "#FFFFFF",
+        textColor : "#D6D6D7",
         fontWeight: "500",
-        backgroundColor : "#000000",
+        backgroundColor : "#1B1A23",
         arrowInactiveColor : "#666666",
         arrowActiveColor : "#FFFFFF",
         separatorColor : "#999999"
     },
     evenRow : {
-        backgroundColor : "#000000",
-        textColor : "#FFFFFF",
+        backgroundColor : "#0A0A12",
+        textColor : "#7D769BDD",
         fontWeight: "500",
         hoverBackgroundColor : "#555555",
-        bottomSeparatorColor : "#444444",
+        bottomSeparatorColor : "#7D769B44",
     },
     oddRow : {
-        backgroundColor : "#333333",
-        textColor : "#FFFFFF",
+        backgroundColor : "#1B1A23",
+        textColor : "#7D769BDD",
         fontWeight: "500",
         hoverBackgroundColor : "#555555",
-        bottomSeparatorColor : "#444444",
+        bottomSeparatorColor : "#7D769B44",
     },
 }
 
