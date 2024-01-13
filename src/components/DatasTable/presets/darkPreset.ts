@@ -30,17 +30,3 @@ export const darkPreset : IPreset = {
     },
     firstnLastRowSeparatorsColor : "#7D769B77",
 }
-
-
-    /*"font" : "Jost",
-    "textColor" : "#FFFFFFFF",
-    "ThTextFontWeight" : "",
-    "ThArrowColor" : "",
-    "ThActiveArrowColor" : "",
-    "evenRowBgColor" : "",
-    "evenRowHoverBgColor" : "",
-    "oddRowBgColor" : "",
-    "oddRowHoverBgColor" : "",
-    "rowTextHoverColor" : "",
-    "rowSeparatorColor" : "",
-    "firstnLastRowSeparatorColor" : "",*/
