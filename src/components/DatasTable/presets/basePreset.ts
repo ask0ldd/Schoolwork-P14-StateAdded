@@ -27,4 +27,5 @@ export const basePreset : IPreset = {
         hoverBackgroundColor : "linear-gradient(360deg, #2c91e4dd, #2c91e4bb)",
         bottomSeparatorColor : "#DDDDDD",
     },
+    firstnLastRowSeparatorsColor : "#111",
 }

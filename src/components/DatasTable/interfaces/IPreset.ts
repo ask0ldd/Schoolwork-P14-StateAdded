@@ -25,4 +25,5 @@ export interface IPreset {
         hoverBackgroundColor : string,
         bottomSeparatorColor : string,
     },
+    firstnLastRowSeparatorsColor: string,
 }

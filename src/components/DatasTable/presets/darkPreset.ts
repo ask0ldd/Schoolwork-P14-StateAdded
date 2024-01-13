@@ -4,7 +4,7 @@ import { IPreset } from "../interfaces/IPreset";
 export const darkPreset : IPreset = {
     global :{
         font : "Jost",
-        textColor : "#7D769B",
+        textColor : "#7D769BDD",
     },
     th : {
         textColor : "#D6D6D7",
@@ -28,6 +28,7 @@ export const darkPreset : IPreset = {
         hoverBackgroundColor : "#555555",
         bottomSeparatorColor : "#7D769B44",
     },
+    firstnLastRowSeparatorsColor : "#7D769B77",
 }
 
 
