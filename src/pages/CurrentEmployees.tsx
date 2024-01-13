@@ -8,7 +8,7 @@ import Header from '../components/Header'
 import Footer from '../components/Footer'
 import { useTypedSelector } from '../redux/hook/typedHooks'
 import { darkPreset } from '../components/DatasTable/presets/darkPreset'
-import { basePreset } from '../components/DatasTable/presets/basePreset'
+// import { basePreset } from '../components/DatasTable/presets/basePreset'
 
 /**
  * Component : Displaying the current employees datatable page.
@@ -34,7 +34,7 @@ function CurrentEmployees() {
     <>
       <Header pageTitle='Current Employees'/>
       <main className='mainCE'>
-        <DatasTable tableModel={tableModel} tableDatas={employeesList} preset={basePreset}/>
+        <DatasTable tableModel={tableModel} tableDatas={employeesList} preset={darkPreset}/>
       </main>
       <Footer/>
     </>

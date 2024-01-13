@@ -28,4 +28,12 @@ export const basePreset : IPreset = {
         bottomSeparatorColor : "#DDDDDD",
     },
     firstnLastRowSeparatorsColor : "#111",
+    paginationButton :
+    {
+        backgroundColor : "linear-gradient(to bottom, #fff 0%, #dcdcdc 100%)",
+        textColor : "#213547",
+        hoverBackgroundColor : "#0078d7",
+        hoverTextColor : "#213547",
+        borderColor : "#fff",
+    },
 }

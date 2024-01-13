@@ -29,4 +29,12 @@ export const darkPreset : IPreset = {
         bottomSeparatorColor : "#2F2D3B",
     },
     firstnLastRowSeparatorsColor : "#30B383",
+    paginationButton :
+    {
+        backgroundColor : "#1B1A23",
+        textColor : "#7D769BDD",
+        hoverBackgroundColor : "#0078d7",
+        hoverTextColor : "#213547",
+        borderColor : "#fff",
+    },
 }

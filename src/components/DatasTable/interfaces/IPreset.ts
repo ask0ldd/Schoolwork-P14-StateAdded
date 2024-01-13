@@ -26,4 +26,12 @@ export interface IPreset {
         bottomSeparatorColor : string,
     },
     firstnLastRowSeparatorsColor: string,
+    paginationButton :
+    {
+        backgroundColor : string,
+        textColor : string,
+        hoverBackgroundColor : string,
+        hoverTextColor : string,
+        borderColor : string,
+    }
 }

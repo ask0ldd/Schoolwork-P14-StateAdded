@@ -11,7 +11,7 @@ import { useContext } from "react"
  */
 function Pagination() {
 
-    const {tableState, dispatch} = useContext(DatasTableContext)
+    const {tableState, dispatch, preset} = useContext(DatasTableContext)
     if(!dispatch || !tableState) return(<></>)
 
     const currentPage = tableState.pagination.currentPage
@@ -19,6 +19,8 @@ function Pagination() {
     const totalEntries = tableState.tableDAO.getProcessedDatas(tableState.getProcessingParameters()).length
     
     const enoughEntriesLeftForNextPage =  currentPage * nEntriesPerPage < totalEntries
+
+    const paginationPreset = preset && preset.paginationButton
 
     /*
      * Previous Table Page.
@@ -54,8 +56,8 @@ function Pagination() {
         <div id="paginationContainer">
           {currentPage > 1 && <span tabIndex={0} style={{marginRight:'0.5rem'}} onClick={() => prevPage(tableState)}>Previous</span>}
           {currentPage > 1 && <div tabIndex={0} className="paginationInactivePage" onClick={() => prevPage(tableState)}>{currentPage-1}</div>}
-          <div tabIndex={0} className="paginationActivePage">{currentPage}</div>
-          {enoughEntriesLeftForNextPage && <div tabIndex={0} className="paginationInactivePage" onClick={() => nextPage(tableState)}>{currentPage+1}</div>}
+          <div style={paginationPreset && {color: paginationPreset?.textColor, background:paginationPreset?.backgroundColor}} tabIndex={0} className="paginationActivePage">{currentPage}</div>
+          {enoughEntriesLeftForNextPage && <div style={paginationPreset && {color: paginationPreset?.textColor, background:paginationPreset?.backgroundColor}} tabIndex={0} className="paginationInactivePage" onClick={() => nextPage(tableState)}>{currentPage+1}</div>}
           {enoughEntriesLeftForNextPage && <span tabIndex={0} style={{marginLeft:'0.5rem'}} onClick={() => nextPage(tableState)}>Next</span>}
         </div>
     )
