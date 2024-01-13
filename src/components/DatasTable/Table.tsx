@@ -23,16 +23,17 @@ function Table() {
     const lastDisplayedEntry =  tableState.pagination ? Math.abs((tableState.pagination.currentPage-1)*tableState.pagination.nEntriesPerPage + tableState.pagination.nEntriesPerPage) : 10
     const rowsToDisplay = [...tableState.tableDAO.getProcessedDatas(tableState.getProcessingParameters())].slice(firstDisplayedEntry, lastDisplayedEntry)
 
-    const thPreset = preset != null ? {color : preset.th.textColor, background : preset.th.backgroundColor}: {}
+    const thPreset = preset != null ? {color : preset.th.textColor, background : preset.th.backgroundColor, fontWeight:preset.th.fontWeight}: {}
     const oddRowPreset = preset != null ? {color : preset.oddRow.textColor, background : preset.oddRow.backgroundColor, borderBottom:'1px solid '+ preset.oddRow.bottomSeparatorColor}: {}
     const evenRowPreset = preset != null ? {color : preset.evenRow.textColor, background : preset.evenRow.backgroundColor, borderBottom:'1px solid '+ preset.evenRow.bottomSeparatorColor}: {}
     const arrowInactiveColor = preset != null ? {color: preset.th.arrowInactiveColor} : {}
     const arrowActiveColor = preset != null ? {color: preset.th.arrowActiveColor} : {}
+    const topSeparatorColor = preset != null ? {borderBottom : '1px solid ' + preset.firstnLastRowSeparatorsColor} : {borderBottom : '1px solid red'}
 
     return (
         <table id={tableModel.getTableId()} aria-label="Current Employees">
-        <thead>
-          <tr style={{background : thPreset.background}} className='bottomblackborder'>
+        <thead style={topSeparatorColor}>
+          <tr style={{background : thPreset.background, border:'none'}}>
           {[...tableModel.getColumnsNamesList()].map((name, index) => (
             <th key={'thtable-'+index} style={{...thPreset, cursor:'pointer'}} onClick={() => {handleSortingClick(index)}}>{name}
               <div className="arrowsContainer">
@@ -44,9 +45,9 @@ function Table() {
             </th>))}
           </tr>
         </thead>
-        <tbody>
+        <tbody style={topSeparatorColor}>
           {[...rowsToDisplay].map((datarow, index) => (
-            <tr style={{...isRowOdd(index) ? oddRowPreset : evenRowPreset, borderBottom : isLastRow(index, rowsToDisplay.length-1)? '1px solid ' + preset?.firstnLastRowSeparatorsColor : '1px solid ' + preset?.oddRow.bottomSeparatorColor}} key={'trtable-'+index} className={isRowOdd(index) + isLastRow(index, rowsToDisplay.length-1) /* !!! use css 2*n+1 */}>
+            <tr style={{...isRowOdd(index) ? oddRowPreset : evenRowPreset, borderBottom : isLastRow(index, rowsToDisplay.length-1) ? 'none' : oddRowPreset.borderBottom}} key={'trtable-'+index} className={isRowOdd(index) + isLastRow(index, rowsToDisplay.length-1) /* !!! use css 2*n+1 */}>
               {[...tableAccessors].map((key : string) => (
                 <td key={'tdtable-'+key+'-'+index}>{datarow[key as keyof typeof datarow]}</td>
               ))}

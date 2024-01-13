@@ -48,6 +48,8 @@ tbody tr:hover {
   /*background-color: #f5f9ff;*/
 }
 
-table tr.bottomblackborder {
+table thead,
+table tbody {
+  border-collapse: collapse;
   border-bottom: 1px solid #111;
 }

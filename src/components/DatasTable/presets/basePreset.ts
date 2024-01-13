@@ -9,19 +9,19 @@ export const basePreset : IPreset = {
         textColor : "#213547",
         fontWeight: "500",
         backgroundColor : "none",
-        arrowInactiveColor : "#666666",
+        arrowInactiveColor : "#ddd",
         arrowActiveColor : "rgb(0, 120, 215)",
-        separatorColor : "#999999"
+        separatorColor : "#111"
     },
     evenRow : {
-        backgroundColor : "#f6f6f6",
+        backgroundColor : "none",
         textColor : "#213547",
         fontWeight: "500",
         hoverBackgroundColor : "linear-gradient(360deg, #2c91e4dd, #2c91e4bb)",
         bottomSeparatorColor : "#DDDDDD",
     },
     oddRow : {
-        backgroundColor : "#f9f9f9",
+        backgroundColor : "#f6f6f6",
         textColor : "#213547",
         fontWeight: "500",
         hoverBackgroundColor : "linear-gradient(360deg, #2c91e4dd, #2c91e4bb)",
