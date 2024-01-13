@@ -26,6 +26,8 @@ function Table() {
     const thPreset = preset != null ? {color : preset.th.textColor, background : preset.th.backgroundColor}: {}
     const oddRowPreset = preset != null ? {color : preset.oddRow.textColor, background : preset.oddRow.backgroundColor, borderBottom:'1px solid '+ preset.oddRow.bottomSeparatorColor}: {}
     const evenRowPreset = preset != null ? {color : preset.evenRow.textColor, background : preset.evenRow.backgroundColor, borderBottom:'1px solid '+ preset.evenRow.bottomSeparatorColor}: {}
+    const arrowInactiveColor = preset != null ? {color: preset.th.arrowInactiveColor} : {}
+    const arrowActiveColor = preset != null ? {color: preset.th.arrowActiveColor} : {}
 
     return (
         <table id={tableModel.getTableId()} aria-label="Current Employees">
@@ -35,9 +37,9 @@ function Table() {
             <th key={'thtable-'+index} style={{...thPreset, cursor:'pointer'}} onClick={() => {handleSortingClick(index)}}>{name}
               <div className="arrowsContainer">
                 {tableModel.getColumns()[index].sortable && 
-                  <span style={tableState.sorting?.direction === "asc" && tableState.sorting?.column == tableAccessors[index] ? {color:'rgb(0, 120, 215)'} : {}}>▲</span>}
+                  <span style={tableState.sorting?.direction === "asc" && tableState.sorting?.column == tableAccessors[index] ? arrowActiveColor : arrowInactiveColor}>▲</span>}
                 {tableModel.getColumns()[index].sortable && 
-                  <span style={tableState.sorting?.direction === "desc" && tableState.sorting?.column == tableAccessors[index] ? {color:'rgb(0, 120, 215)'} : {}}>▼</span>}
+                  <span style={tableState.sorting?.direction === "desc" && tableState.sorting?.column == tableAccessors[index] ? arrowActiveColor : arrowInactiveColor}>▼</span>}
               </div>
             </th>))}
           </tr>

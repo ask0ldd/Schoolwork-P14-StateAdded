@@ -7,10 +7,10 @@ export const darkPreset : IPreset = {
         textColor : "#7D769BDD",
     },
     th : {
-        textColor : "#D6D6D7",
+        textColor : "#7D769BFF",
         fontWeight: "500",
         backgroundColor : "#1B1A23",
-        arrowInactiveColor : "#666666",
+        arrowInactiveColor : "#7D769BFF",
         arrowActiveColor : "#FFFFFF",
         separatorColor : "#999999"
     },
