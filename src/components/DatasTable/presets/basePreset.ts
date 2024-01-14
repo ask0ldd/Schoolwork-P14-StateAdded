@@ -36,8 +36,9 @@ export const basePreset : IPreset = {
         borderColor: "#fff",
     },
     searchBar: {
+        labelTextColor: "#454545",
         backgroundColor: "#f6f6f6",
-        textColor: "#454545",
+        inputTextColor: "#454545",
         inputBorderColor: "#c5c5c5",
         focusInputBorderColor: "#0078d7"
     }

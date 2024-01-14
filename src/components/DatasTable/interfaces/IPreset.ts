@@ -36,9 +36,10 @@ export interface IPreset {
     },
     searchBar :
     {
-        backgroundColor : string
-        textColor : string,
-        inputBorderColor : string,
-        focusInputBorderColor : string,
+        labelTextColor: string,
+        inputBackgroundColor: string,
+        inputTextColor:  string,
+        inputBorderColor: string,
+        focusInputBorderColor: string,
     }
 }

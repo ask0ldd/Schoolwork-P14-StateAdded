@@ -37,8 +37,9 @@ export const darkPreset : IPreset = {
         borderColor: "#fff",
     },
     searchBar: {
-        backgroundColor: "rgb(27, 26, 35)",
-        textColor: "rgba(125, 118, 155, 0.867)",
+        labelTextColor: "rgba(125, 118, 155, 0.867)",
+        inputBackgroundColor: "rgb(27, 26, 35)",
+        inputTextColor: "rgb(145, 138, 173)",
         inputBorderColor: "rgb(47, 45, 59);",
         focusInputBorderColor: "#30B383"
     }

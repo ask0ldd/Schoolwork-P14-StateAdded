@@ -10,13 +10,19 @@ import { useContext } from "react"
  */
 function SearchModule() {
 
-    const { dispatch } = useContext(DatasTableContext)
+    const { dispatch, preset } = useContext(DatasTableContext)
     if(!dispatch) return(<></>)
+
+    const inputStyle = {
+        color : preset?.searchBar.inputTextColor,
+        background : preset?.searchBar.inputBackgroundColor,
+        border : "1px solid " + preset?.searchBar.inputBorderColor,
+    }
 
     return (
         <div id="searchContainer">
-        <label htmlFor='search'>Search:</label>
-        <input contentEditable id='search' type="text" onInput={
+        <label style={{color : preset?.searchBar.labelTextColor}} htmlFor='search'>Search:</label>
+        <input style={inputStyle} contentEditable id='search' type="text" onInput={
             (e)=> dispatch({type : "search", payload : e.currentTarget.value })
         }/>
         </div>
