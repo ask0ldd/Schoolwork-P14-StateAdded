@@ -33,5 +33,12 @@ export interface IPreset {
         hoverBackgroundColor : string,
         hoverTextColor : string,
         borderColor : string,
+    },
+    searchBar :
+    {
+        backgroundColor : string
+        textColor : string,
+        inputBorderColor : string,
+        focusInputBorderColor : string,
     }
 }
