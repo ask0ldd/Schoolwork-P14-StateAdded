@@ -18,6 +18,7 @@ export const basePreset : IPreset = {
         textColor: "#213547",
         fontWeight: "400",
         hoverBackgroundColor: "linear-gradient(360deg, #2c91e4dd, #2c91e4bb)",
+        hoverTextColor : "#FFFFFF",
         bottomSeparatorColor: "#DDDDDD",
     },
     oddRow: {
@@ -25,6 +26,7 @@ export const basePreset : IPreset = {
         textColor: "#213547",
         fontWeight: "400",
         hoverBackgroundColor: "linear-gradient(360deg, #2c91e4dd, #2c91e4bb)",
+        hoverTextColor : "#FFFFFF",
         bottomSeparatorColor: "#DDDDDD",
     },
     firstnLastRowSeparatorsColor: "#111",

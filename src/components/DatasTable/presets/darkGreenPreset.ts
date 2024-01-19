@@ -1,7 +1,7 @@
 import { IPreset } from "../interfaces/IPreset";
 
 /* eslint-disable @typescript-eslint/no-unused-vars */
-export const darkPreset : IPreset = {
+export const darkGreenPreset : IPreset = {
     global: {
         font: "Jost",
         textColor: "#7D769BDD",
@@ -19,6 +19,7 @@ export const darkPreset : IPreset = {
         textColor: "#7D769BDD",
         fontWeight: "500",
         hoverBackgroundColor: "#555555",
+        hoverTextColor : "#1B1A23",
         bottomSeparatorColor: "#2F2D3B",
     },
     oddRow: {
@@ -26,6 +27,7 @@ export const darkPreset : IPreset = {
         textColor: "#7D769BDD",
         fontWeight: "500",
         hoverBackgroundColor: "#555555",
+        hoverTextColor : "#1B1A23",
         bottomSeparatorColor: "#2F2D3B",
     },
     firstnLastRowSeparatorsColor: "#30B383",

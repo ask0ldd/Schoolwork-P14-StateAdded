@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useContext } from "react"
+import { useContext, useState } from "react"
 import { DatasTableContext } from './DatasTableContext'
 import './style/Table.css'
 
@@ -13,6 +13,7 @@ import './style/Table.css'
 function Table() {
 
     const {tableState, dispatch, tableModel, preset} = useContext(DatasTableContext)
+    const [hoverTR, setHoverTR] = useState(0)
 
     if(!dispatch || !tableState || !tableModel || tableState.tableDAO.getProcessedDatas(tableState.getProcessingParameters()).length === 0) 
       return(<>No data available in table.</>)
@@ -30,6 +31,7 @@ function Table() {
     const arrowInactiveColor = preset != null ? {color: preset.th.arrowInactiveColor} : {}
     const arrowActiveColor = preset != null ? {color: preset.th.arrowActiveColor} : {}
     const topSeparatorColor = preset != null ? {borderBottom : '1px solid ' + preset.firstnLastRowSeparatorsColor} : {borderBottom : '1px solid red'}
+    const focusRowStyle = {background : preset.evenRow.hoverBackgroundColor}
 
     return (
         <table id={tableModel.getTableId()} aria-label="Current Employees">
@@ -48,7 +50,11 @@ function Table() {
         </thead>
         <tbody style={topSeparatorColor}>
           {[...rowsToDisplay].map((datarow, index) => (
-            <tr style={{...isRowOdd(index) ? oddRowPreset : evenRowPreset, borderBottom : isLastRow(index, rowsToDisplay.length-1) ? 'none' : oddRowPreset.borderBottom}} key={'trtable-'+index} className={isRowOdd(index) + isLastRow(index, rowsToDisplay.length-1) /* !!! use css 2*n+1 */}>
+            <tr onMouseOut={() => setHoverTR(0)} onMouseEnter={() => setHoverTR(index)}
+                style={ hoverTR === index ? focusRowStyle
+                : {...isRowOdd(index) ? oddRowPreset : evenRowPreset, 
+                borderBottom : isLastRow(index, rowsToDisplay.length-1) ? 'none' : oddRowPreset.borderBottom}} 
+                key={'trtable-'+index} className={isRowOdd(index) + isLastRow(index, rowsToDisplay.length-1)}>
               {[...tableAccessors].map((key : string) => (
                 <td key={'tdtable-'+key+'-'+index}>{datarow[key as keyof typeof datarow]}</td>
               ))}

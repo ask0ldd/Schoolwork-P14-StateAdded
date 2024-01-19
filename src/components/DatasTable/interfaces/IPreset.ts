@@ -16,6 +16,7 @@ export interface IPreset {
         textColor : string,
         fontWeight: string,
         hoverBackgroundColor : string,
+        hoverTextColor : string,
         bottomSeparatorColor : string,
     },
     oddRow : {
@@ -23,6 +24,7 @@ export interface IPreset {
         textColor : string,
         fontWeight: string,
         hoverBackgroundColor : string,
+        hoverTextColor : string,
         bottomSeparatorColor : string,
     },
     firstnLastRowSeparatorsColor: string,

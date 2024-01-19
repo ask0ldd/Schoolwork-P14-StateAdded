@@ -12,7 +12,7 @@ import { useContext, useState } from "react"
 function Pagination() {
 
     const {tableState, dispatch, preset} = useContext(DatasTableContext)
-    const[activeButton, setActiveButton] = useState(0)
+    const[focusButton, setFocusButton] = useState(0)
     if(!dispatch || !tableState) return(<></>)
 
     const currentPage = tableState.pagination.currentPage
@@ -34,6 +34,7 @@ function Pagination() {
       fontWeight : 600,
       boxShadow: '0 4px 8px ' + preset.paginationButton.hoverDropShadowColor,
       border : '1px solid ' + preset.paginationButton.hoverBackgroundColor,
+      opacity: 1,
     }
 
     /*
@@ -73,12 +74,12 @@ function Pagination() {
                   tabIndex={0} onClick={() => prevPage(tableState)}>Previous</span>}
 
           {currentPage > 1 && 
-            <div role='button' onMouseOut={() => setActiveButton(0)} onMouseEnter={() => setActiveButton(1)} style={activeButton == 1 ? paginationButtonHoverStyle : paginationButtonStyle} tabIndex={0} className="paginationInactivePage" onClick={() => prevPage(tableState)}>{currentPage-1}</div>}
+            <div role='button' onMouseOut={() => setFocusButton(0)} onMouseEnter={() => setFocusButton(1)} style={focusButton == 1 ? paginationButtonHoverStyle : paginationButtonStyle} tabIndex={0} className="paginationInactivePage" onClick={() => prevPage(tableState)}>{currentPage-1}</div>}
           
-          <div role='button' onMouseOut={() => setActiveButton(0)} onMouseEnter={() => setActiveButton(2)} style={activeButton == 2 ? paginationButtonHoverStyle : paginationButtonStyle} tabIndex={0} className="paginationActivePage">{currentPage}</div>
+          <div role='button' onMouseOut={() => setFocusButton(0)} onMouseEnter={() => setFocusButton(2)} style={focusButton == 2 ? paginationButtonHoverStyle : paginationButtonStyle} tabIndex={0} className="paginationActivePage">{currentPage}</div>
           
           {enoughEntriesLeftForNextPage && 
-            <div role='button' onMouseOut={() => setActiveButton(0)} onMouseEnter={() => setActiveButton(3)} style={activeButton == 3 ? paginationButtonHoverStyle : paginationButtonStyle} tabIndex={0} className="paginationInactivePage" onClick={() => nextPage(tableState)}>{currentPage+1}</div>}
+            <div role='button' onMouseOut={() => setFocusButton(0)} onMouseEnter={() => setFocusButton(3)} style={focusButton == 3 ? paginationButtonHoverStyle : paginationButtonStyle} tabIndex={0} className="paginationInactivePage" onClick={() => nextPage(tableState)}>{currentPage+1}</div>}
           
           {enoughEntriesLeftForNextPage && 
             <span role='button' style={preset.paginationNextPrevious ? { color: preset.paginationNextPrevious.textColor, marginLeft:'0.5rem' } : {marginLeft:'0.5rem'}} 
