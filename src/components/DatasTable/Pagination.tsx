@@ -32,6 +32,7 @@ function Pagination() {
       background : preset.paginationButton.hoverBackgroundColor,
       color : preset.paginationButton.hoverTextColor,
       fontWeight : 600,
+      boxShadow: '0 4px 8px ' + preset.paginationButton.hoverDropShadowColor,
       border : '1px solid ' + preset.paginationButton.hoverBackgroundColor,
     }
 

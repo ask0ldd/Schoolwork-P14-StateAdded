@@ -33,7 +33,8 @@ export const darkPreset : IPreset = {
         backgroundColor: "#1B1A23",
         textColor: "#7D769BDD",
         hoverBackgroundColor: "#30B383",
-        hoverTextColor: "#213547",
+        hoverTextColor: "#FFFFFFFF",
+        hoverDropShadowColor : "#30B38399",
         borderColor: "#2F2D3B",
     },
     paginationNextPrevious:{

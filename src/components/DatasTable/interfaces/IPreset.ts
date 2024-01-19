@@ -32,6 +32,7 @@ export interface IPreset {
         textColor : string,
         hoverBackgroundColor : string,
         hoverTextColor : string,
+        hoverDropShadowColor : string,
         borderColor : string,
     },
     paginationNextPrevious:{
