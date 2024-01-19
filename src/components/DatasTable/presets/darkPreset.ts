@@ -34,7 +34,10 @@ export const darkPreset : IPreset = {
         textColor: "#7D769BDD",
         hoverBackgroundColor: "#30B383",
         hoverTextColor: "#213547",
-        borderColor: "#fff",
+        borderColor: "#2F2D3B",
+    },
+    paginationNextPrevious:{
+        textColor : "#7D769BDD",
     },
     searchBar: {
         labelTextColor: "rgba(125, 118, 155, 0.867)",
@@ -42,5 +45,8 @@ export const darkPreset : IPreset = {
         inputTextColor: "rgb(145, 138, 173)",
         inputBorderColor: "rgb(47, 45, 59);",
         focusInputBorderColor: "#30B383"
+    },
+    nEntries : {
+        textColor: "#918AAD",
     }
 }

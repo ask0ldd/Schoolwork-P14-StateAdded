@@ -35,11 +35,17 @@ export const basePreset : IPreset = {
         hoverTextColor: "#213547",
         borderColor: "#fff",
     },
+    paginationNextPrevious:{
+        textColor : "#213547",
+    },
     searchBar: {
         labelTextColor: "#454545",
         inputBackgroundColor: "#f6f6f6",
         inputTextColor: "#454545",
         inputBorderColor: "#c5c5c5",
         focusInputBorderColor: "#0078d7"
+    },
+    nEntries : {
+        textColor: "#213547",
     }
 }

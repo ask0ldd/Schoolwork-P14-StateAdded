@@ -34,6 +34,9 @@ export interface IPreset {
         hoverTextColor : string,
         borderColor : string,
     },
+    paginationNextPrevious:{
+        textColor : string,
+    },
     searchBar :
     {
         labelTextColor: string,
@@ -41,5 +44,8 @@ export interface IPreset {
         inputTextColor:  string,
         inputBorderColor: string,
         focusInputBorderColor: string,
+    },
+    nEntries : {
+        textColor : string,
     }
 }
