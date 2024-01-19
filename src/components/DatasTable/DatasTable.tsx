@@ -11,6 +11,7 @@ import { TableModel } from './models/TableModel'
 import useTableManager from './hooks/useTableManager'
 import { DatasTableContext } from './DatasTableContext'
 import { IPreset } from './interfaces/IPreset'
+import { basePreset } from './presets/basePreset'
 
 /**
  * Component : Grouping of all the constitutive elements of a datatable.

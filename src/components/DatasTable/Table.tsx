@@ -23,6 +23,7 @@ function Table() {
     const lastDisplayedEntry =  tableState.pagination ? Math.abs((tableState.pagination.currentPage-1)*tableState.pagination.nEntriesPerPage + tableState.pagination.nEntriesPerPage) : 10
     const rowsToDisplay = [...tableState.tableDAO.getProcessedDatas(tableState.getProcessingParameters())].slice(firstDisplayedEntry, lastDisplayedEntry)
 
+    // defining elements styles
     const thPreset = preset != null ? {color : preset.th.textColor, background : preset.th.backgroundColor, fontWeight:preset.th.fontWeight}: {}
     const oddRowPreset = preset != null ? {color : preset.oddRow.textColor, background : preset.oddRow.backgroundColor, borderBottom:'1px solid '+ preset.oddRow.bottomSeparatorColor}: {}
     const evenRowPreset = preset != null ? {color : preset.evenRow.textColor, background : preset.evenRow.backgroundColor, borderBottom:'1px solid '+ preset.evenRow.bottomSeparatorColor}: {}

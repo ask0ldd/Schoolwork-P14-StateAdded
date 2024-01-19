@@ -16,20 +16,20 @@ function SearchModule() {
     if(!dispatch) return(<></>)
 
     const inputStyle = {
-        color : preset?.searchBar.inputTextColor,
-        background : preset?.searchBar.inputBackgroundColor,
-        border : "1px solid " + preset?.searchBar.inputBorderColor,
+        color : preset.searchBar.inputTextColor,
+        background : preset.searchBar.inputBackgroundColor,
+        border : "1px solid " + preset.searchBar.inputBorderColor,
     }
 
     const inputStyleFocus = {
         ...inputStyle,
         /*outline: "none",*/
-        outline : "1px solid " + preset?.searchBar.focusInputBorderColor,
+        outline : "1px solid " + preset.searchBar.focusInputBorderColor,
     }
 
     return (
         <div id="searchContainer">
-        <label style={{color : preset?.searchBar.labelTextColor}} htmlFor='search'>Search:</label>
+        <label style={{color : preset.searchBar.labelTextColor}} htmlFor='search'>Search:</label>
         <input onBlur={() => setIntputFocus(prevFocusState => !prevFocusState)} 
             onFocus={() => setIntputFocus(prevFocusState => !prevFocusState)} 
             style={inputFocus ? inputStyleFocus : inputStyle} contentEditable id='search' type="text" 
