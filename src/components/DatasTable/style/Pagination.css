@@ -26,16 +26,11 @@
   justify-content: center;
   align-items: center;
   border: 1px solid #979797;
-  padding: 0.5em 1em;
+  /*padding: 0.5em 1em;*/
+  height: 41px;
+  width: 42px;
   cursor: pointer;
 }
-
-/*.paginationActivePage:hover {
-  outline: 1px solid #213547;
-  background: #fff;
-  opacity: 1;
-  box-shadow: 0px 4px 8px #61798f;
-}*/
 
 .paginationInactivePage {
   background: linear-gradient(to bottom, #fff 0%, #dcdcdc 100%);
@@ -43,17 +38,13 @@
   justify-content: center;
   align-items: center;
   border: 1px solid #979797;
-  padding: 0.5em 1em;
+  /*padding: 0.5em 1em;*/
+  height: 41px;
+  width: 42px;
   cursor: pointer;
   opacity: 0.6;
 }
 
-/*.paginationInactivePage:hover {
-  outline: 1px solid #213547;
-  background: #fff;
-  opacity: 1;
-  box-shadow: 0px 4px 8px #61798f;
-}*/
 .paginationActivePage:hover,
 .paginationInactivePage:hover {
   background: #0078d7;

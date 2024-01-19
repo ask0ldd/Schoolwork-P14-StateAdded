@@ -8,7 +8,7 @@ export const darkPreset : IPreset = {
     },
     th: {
         textColor: "#918AAD",
-        fontWeight: "500",
+        fontWeight: "600",
         backgroundColor: "#1B1A23",
         arrowInactiveColor: "#7D769BFF",
         arrowActiveColor: "#30B383",

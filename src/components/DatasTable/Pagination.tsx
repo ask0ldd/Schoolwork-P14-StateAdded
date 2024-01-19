@@ -2,7 +2,7 @@
 import { DatasTableContext } from './DatasTableContext'
 import { ITableState } from './interfaces/ITableState'
 import './style/Pagination.css'
-import { useContext } from "react"
+import { useContext, useState } from "react"
 
 /**
  * Component : Datatable pagination.
@@ -12,6 +12,7 @@ import { useContext } from "react"
 function Pagination() {
 
     const {tableState, dispatch, preset} = useContext(DatasTableContext)
+    const[activeButton, setActiveButton] = useState(0)
     if(!dispatch || !tableState) return(<></>)
 
     const currentPage = tableState.pagination.currentPage
@@ -21,17 +22,18 @@ function Pagination() {
     const enoughEntriesLeftForNextPage =  currentPage * nEntriesPerPage < totalEntries
 
     // const paginationPreset = preset && preset.paginationButton
-    let paginationButtonPreset = {}
-    if(preset.paginationButton.backgroundColor) paginationButtonPreset = {...paginationButtonPreset, background : preset.paginationButton.backgroundColor}
-    if(preset.paginationButton.textColor) paginationButtonPreset = {...paginationButtonPreset, color : preset.paginationButton.textColor}
-    if(preset.paginationButton.borderColor) paginationButtonPreset = {...paginationButtonPreset, border : '1px solid ' + preset.paginationButton.borderColor}
-    /*
-            backgroundColor: "#1B1A23",
-        textColor: "#7D769BDD",
-        hoverBackgroundColor: "#30B383",
-        hoverTextColor: "#213547",
-        borderColor: "#2F2D3B",
-    */
+    const paginationButtonStyle = {
+      background : preset.paginationButton.backgroundColor,
+      color : preset.paginationButton.textColor,
+      border : '1px solid ' + preset.paginationButton.borderColor,
+    }
+
+    const paginationButtonHoverStyle = {
+      background : preset.paginationButton.hoverBackgroundColor,
+      color : preset.paginationButton.hoverTextColor,
+      fontWeight : 600,
+      border : '1px solid ' + preset.paginationButton.hoverBackgroundColor,
+    }
 
     /*
      * Previous Table Page.
@@ -66,15 +68,19 @@ function Pagination() {
     return (
         <div id="paginationContainer">
           {currentPage > 1 && 
-            <span style={preset.paginationNextPrevious ? { color: preset.paginationNextPrevious.textColor, marginLeft:'0.5rem' } : {marginLeft:'0.5rem'}} 
+            <span role='button' style={preset.paginationNextPrevious ? { color: preset.paginationNextPrevious.textColor, marginLeft:'0.5rem' } : {marginLeft:'0.5rem'}} 
                   tabIndex={0} onClick={() => prevPage(tableState)}>Previous</span>}
+
           {currentPage > 1 && 
-            <div style={paginationButtonPreset} tabIndex={0} className="paginationInactivePage" onClick={() => prevPage(tableState)}>{currentPage-1}</div>}
-          <div style={paginationButtonPreset} tabIndex={0} className="paginationActivePage">{currentPage}</div>
+            <div role='button' onMouseOut={() => setActiveButton(0)} onMouseEnter={() => setActiveButton(1)} style={activeButton == 1 ? paginationButtonHoverStyle : paginationButtonStyle} tabIndex={0} className="paginationInactivePage" onClick={() => prevPage(tableState)}>{currentPage-1}</div>}
+          
+          <div role='button' onMouseOut={() => setActiveButton(0)} onMouseEnter={() => setActiveButton(2)} style={activeButton == 2 ? paginationButtonHoverStyle : paginationButtonStyle} tabIndex={0} className="paginationActivePage">{currentPage}</div>
+          
           {enoughEntriesLeftForNextPage && 
-            <div style={paginationButtonPreset} tabIndex={0} className="paginationInactivePage" onClick={() => nextPage(tableState)}>{currentPage+1}</div>}
+            <div role='button' onMouseOut={() => setActiveButton(0)} onMouseEnter={() => setActiveButton(3)} style={activeButton == 3 ? paginationButtonHoverStyle : paginationButtonStyle} tabIndex={0} className="paginationInactivePage" onClick={() => nextPage(tableState)}>{currentPage+1}</div>}
+          
           {enoughEntriesLeftForNextPage && 
-            <span style={preset.paginationNextPrevious ? { color: preset.paginationNextPrevious.textColor, marginLeft:'0.5rem' } : {marginLeft:'0.5rem'}} 
+            <span role='button' style={preset.paginationNextPrevious ? { color: preset.paginationNextPrevious.textColor, marginLeft:'0.5rem' } : {marginLeft:'0.5rem'}} 
                   tabIndex={0} onClick={() => nextPage(tableState)}>Next</span>}
         </div>
     )
