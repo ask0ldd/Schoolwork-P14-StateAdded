@@ -13,7 +13,7 @@ import './style/Table.css'
 function Table() {
 
     const {tableState, dispatch, tableModel, preset} = useContext(DatasTableContext)
-    const [hoverTR, setHoverTR] = useState(0)
+    const [hoverTR, setHoverTR] = useState(-1)
 
     if(!dispatch || !tableState || !tableModel || tableState.tableDAO.getProcessedDatas(tableState.getProcessingParameters()).length === 0) 
       return(<>No data available in table.</>)
@@ -25,13 +25,13 @@ function Table() {
     const rowsToDisplay = [...tableState.tableDAO.getProcessedDatas(tableState.getProcessingParameters())].slice(firstDisplayedEntry, lastDisplayedEntry)
 
     // defining elements styles
-    const thPreset = preset != null ? {color : preset.th.textColor, background : preset.th.backgroundColor, fontWeight:preset.th.fontWeight}: {}
-    const oddRowPreset = preset != null ? {color : preset.oddRow.textColor, background : preset.oddRow.backgroundColor, borderBottom:'1px solid '+ preset.oddRow.bottomSeparatorColor}: {}
-    const evenRowPreset = preset != null ? {color : preset.evenRow.textColor, background : preset.evenRow.backgroundColor, borderBottom:'1px solid '+ preset.evenRow.bottomSeparatorColor}: {}
-    const arrowInactiveColor = preset != null ? {color: preset.th.arrowInactiveColor} : {}
-    const arrowActiveColor = preset != null ? {color: preset.th.arrowActiveColor} : {}
-    const topSeparatorColor = preset != null ? {borderBottom : '1px solid ' + preset.firstnLastRowSeparatorsColor} : {borderBottom : '1px solid red'}
-    const focusRowStyle = {background : preset.evenRow.hoverBackgroundColor}
+    const thPreset = {color : preset.th.textColor, background : preset.th.backgroundColor, fontWeight:preset.th.fontWeight}
+    const oddRowPreset = {color : preset.oddRow.textColor, background : preset.oddRow.backgroundColor, borderBottom:'1px solid '+ preset.oddRow.bottomSeparatorColor}
+    const evenRowPreset = {color : preset.evenRow.textColor, background : preset.evenRow.backgroundColor, borderBottom:'1px solid '+ preset.evenRow.bottomSeparatorColor}
+    const arrowInactiveColor = {color: preset.th.arrowInactiveColor}
+    const arrowActiveColor = {color: preset.th.arrowActiveColor}
+    const topSeparatorColor = {borderBottom : '1px solid ' + preset.firstnLastRowSeparatorsColor}
+    const hoverRowStyle = {background : preset.evenRow.hoverBackgroundColor, borderBottom:'1px solid ' + preset.evenRow.hoverBackgroundColor, color : preset.evenRow.hoverTextColor}
 
     return (
         <table id={tableModel.getTableId()} aria-label="Current Employees">
@@ -50,8 +50,8 @@ function Table() {
         </thead>
         <tbody style={topSeparatorColor}>
           {[...rowsToDisplay].map((datarow, index) => (
-            <tr onMouseOut={() => setHoverTR(0)} onMouseEnter={() => setHoverTR(index)}
-                style={ hoverTR === index ? focusRowStyle
+            <tr onMouseOut={() => setHoverTR(-1)} onMouseEnter={() => setHoverTR(index)}
+                style={ hoverTR === index ? hoverRowStyle
                 : {...isRowOdd(index) ? oddRowPreset : evenRowPreset, 
                 borderBottom : isLastRow(index, rowsToDisplay.length-1) ? 'none' : oddRowPreset.borderBottom}} 
                 key={'trtable-'+index} className={isRowOdd(index) + isLastRow(index, rowsToDisplay.length-1)}>
