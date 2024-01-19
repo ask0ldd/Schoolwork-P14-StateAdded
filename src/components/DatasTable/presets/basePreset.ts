@@ -33,7 +33,7 @@ export const basePreset : IPreset = {
         textColor: "#213547",
         hoverBackgroundColor: "#0078d7",
         hoverTextColor: "#213547",
-        borderColor: "#fff",
+        borderColor: "#979797",
     },
     paginationNextPrevious:{
         textColor : "#213547",

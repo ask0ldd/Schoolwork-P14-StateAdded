@@ -10,9 +10,9 @@
   align-items: center;
 }
 
-#searchContainer input:focus {
+/*#searchContainer input:focus {
   outline: 1px solid #0078d7;
-}
+}*/
 
 #searchContainer input {
   font-family: "Jost", sans-serif;

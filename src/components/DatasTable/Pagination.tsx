@@ -25,7 +25,6 @@ function Pagination() {
     if(preset?.paginationButton.backgroundColor) paginationButtonPreset = {...paginationButtonPreset, background : preset.paginationButton.backgroundColor}
     if(preset?.paginationButton.textColor) paginationButtonPreset = {...paginationButtonPreset, color : preset.paginationButton.textColor}
     if(preset?.paginationButton.borderColor) paginationButtonPreset = {...paginationButtonPreset, border : '1px solid ' + preset.paginationButton.borderColor}
-
     /*
             backgroundColor: "#1B1A23",
         textColor: "#7D769BDD",
@@ -66,11 +65,17 @@ function Pagination() {
 
     return (
         <div id="paginationContainer">
-          {currentPage > 1 && <span style={preset?.paginationNextPrevious ? { color: preset.paginationNextPrevious.textColor, marginLeft:'0.5rem' } : {marginLeft:'0.5rem'}} tabIndex={0} onClick={() => prevPage(tableState)}>Previous</span>}
-          {currentPage > 1 && <div style={paginationButtonPreset} tabIndex={0} className="paginationInactivePage" onClick={() => prevPage(tableState)}>{currentPage-1}</div>}
+          {currentPage > 1 && 
+            <span style={preset?.paginationNextPrevious ? { color: preset.paginationNextPrevious.textColor, marginLeft:'0.5rem' } : {marginLeft:'0.5rem'}} 
+                  tabIndex={0} onClick={() => prevPage(tableState)}>Previous</span>}
+          {currentPage > 1 && 
+            <div style={paginationButtonPreset} tabIndex={0} className="paginationInactivePage" onClick={() => prevPage(tableState)}>{currentPage-1}</div>}
           <div style={paginationButtonPreset} tabIndex={0} className="paginationActivePage">{currentPage}</div>
-          {enoughEntriesLeftForNextPage && <div style={paginationButtonPreset} tabIndex={0} className="paginationInactivePage" onClick={() => nextPage(tableState)}>{currentPage+1}</div>}
-          {enoughEntriesLeftForNextPage && <span style={preset?.paginationNextPrevious ? { color: preset.paginationNextPrevious.textColor, marginLeft:'0.5rem' } : {marginLeft:'0.5rem'}} tabIndex={0} onClick={() => nextPage(tableState)}>Next</span>}
+          {enoughEntriesLeftForNextPage && 
+            <div style={paginationButtonPreset} tabIndex={0} className="paginationInactivePage" onClick={() => nextPage(tableState)}>{currentPage+1}</div>}
+          {enoughEntriesLeftForNextPage && 
+            <span style={preset?.paginationNextPrevious ? { color: preset.paginationNextPrevious.textColor, marginLeft:'0.5rem' } : {marginLeft:'0.5rem'}} 
+                  tabIndex={0} onClick={() => nextPage(tableState)}>Next</span>}
         </div>
     )
 }

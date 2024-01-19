@@ -6,7 +6,7 @@
   max-width: 1440px;
   padding-top: 3rem;
   min-height: calc(100vh - 16rem);
-  background: #0a0a12;
+  /*background: #0a0a12;*/
 }
 
 #entriesNSearchContainer,
