@@ -14,6 +14,7 @@
 
 .selectOptionsContainer li {
   padding: 0.5em 1em 0.45em 1em;
+  cursor: pointer;
 }
 
 /*.selectOptionsContainer li:hover {

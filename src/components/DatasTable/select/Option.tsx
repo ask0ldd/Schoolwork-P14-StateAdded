@@ -1,7 +1,8 @@
 import './style/OptionsList.css'
-import { useContext } from 'react'
+import { useContext, useRef, useState } from 'react'
 import { IOption } from './Select'
 import { SelectContext } from './contexts/SelectContext'
+import { DatasTableContext } from '../DatasTableContext'
 
 /**
  * Component : One Option - Populates the option list of a custom select.
@@ -16,6 +17,10 @@ import { SelectContext } from './contexts/SelectContext'
 function Option({index, option} : IProps){
 
     const { options, activeOption, listbox } = useContext(SelectContext)
+    const {preset} = useContext(DatasTableContext)
+    const [hoverOption, setHoverOption] = useState("0")
+
+    const optionHoverStyle = { color : preset.selectEntriesPerPage.hoverOptionTextColor, background : preset.selectEntriesPerPage.hoverOptionBackgroundColor }
 
     /**
      * Check if the given option is active.
@@ -29,7 +34,11 @@ function Option({index, option} : IProps){
 
     return (
         <li role="option" id={option.value} data-value={option.value} aria-selected={isOptionActive(options[index])} 
-        style={isOptionActive(options[index]) ? {background:'#dfdfdf',} : {}} 
+        style={ hoverOption == option.value ? optionHoverStyle 
+             : isOptionActive(options[index]) ? {background:'#dfdfdf',} : {}
+        } 
+        onMouseEnter={() => setHoverOption(option.value)}
+        onMouseOut={() => setHoverOption("0")}
         onMouseDown={() => {activeOption.set(options[index]); listbox.setAsExpanded(false);}} value={option.value}>{option.label}</li>
     )
 }
