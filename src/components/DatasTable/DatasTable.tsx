@@ -50,7 +50,7 @@ function DatasTable({tableModel, tableDatas, preset} : IProps){
                 // providing model, datas & dispatch fn to the children components
                 <DatasTableContext.Provider value={{tableModel, dispatch, tableState, preset : preset}}>
                     <div id="entriesNSearchContainer">
-                        <NDisplayedSelect/>
+                        <NDisplayedSelect/>                        
                         <SearchModule/>
                     </div>
                     <Table/>
