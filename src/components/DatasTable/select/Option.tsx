@@ -1,5 +1,5 @@
 import './style/OptionsList.css'
-import { useContext, useRef, useState } from 'react'
+import { useContext, useState } from 'react'
 import { IOption } from './Select'
 import { SelectContext } from './contexts/SelectContext'
 import { DatasTableContext } from '../DatasTableContext'
@@ -35,7 +35,7 @@ function Option({index, option} : IProps){
     return (
         <li role="option" id={option.value} data-value={option.value} aria-selected={isOptionActive(options[index])} 
         style={ hoverOption == option.value ? optionHoverStyle 
-             : isOptionActive(options[index]) ? {background:'#dfdfdf',} : {}
+             : isOptionActive(options[index]) ? {background:preset.selectEntriesPerPage.activeOptionBackgroundColor,} : {}
         } 
         onMouseEnter={() => setHoverOption(option.value)}
         onMouseOut={() => setHoverOption("0")}

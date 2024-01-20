@@ -59,5 +59,8 @@ export const lightPurplePreset : IPreset = {
         focusSelectBorderColor: "#5e30b4bb",
         hoverOptionBackgroundColor: "#5e30b4bb",
         hoverOptionTextColor: "#FFFFFF",
+        activeOptionBackgroundColor: "#dfdfdf",
+        optionsContainerBackgroundColor: "#f6f6f6",
+        optionsContainerBorderColor: "#c5c5c5"
     },
 }

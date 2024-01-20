@@ -17,7 +17,7 @@ export const basePreset : IPreset = {
         backgroundColor: "none",
         textColor: "#213547",
         fontWeight: "400",
-        hoverBackgroundColor: "linear-gradient(360deg, #2c91e4dd, #2c91e4bb)",
+        hoverBackgroundColor: "linear-gradient(360deg, #2c91e4cc, #2c91e4aa)",
         hoverTextColor : "#FFFFFF",
         bottomSeparatorColor: "#DDDDDD",
     },
@@ -25,7 +25,7 @@ export const basePreset : IPreset = {
         backgroundColor: "#f6f6f6",
         textColor: "#213547",
         fontWeight: "400",
-        hoverBackgroundColor: "linear-gradient(360deg, #2c91e4dd, #2c91e4bb)",
+        hoverBackgroundColor: "linear-gradient(360deg, #2c91e4cc, #2c91e4aa)",
         hoverTextColor : "#FFFFFF",
         bottomSeparatorColor: "#DDDDDD",
     },
@@ -58,6 +58,9 @@ export const basePreset : IPreset = {
         selectBorderColor: "#c5c5c5",
         focusSelectBorderColor: "#0078d7",
         hoverOptionBackgroundColor: "#0078d7",
-        hoverOptionTextColor: "#FFFFFF"
+        hoverOptionTextColor: "#FFFFFF",
+        activeOptionBackgroundColor: "#dfdfdf",
+        optionsContainerBackgroundColor: "#f6f6f6",
+        optionsContainerBorderColor: "#c5c5c5"
     },
 }
