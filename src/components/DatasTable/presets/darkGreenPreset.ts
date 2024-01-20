@@ -62,6 +62,7 @@ export const darkGreenPreset : IPreset = {
         hoverOptionTextColor: "#FFFFFF",
         optionsContainerBackgroundColor: "#1B1A23",
         optionsContainerBorderColor: "rgba(125, 118, 155, 0.867)",
-        activeOptionBackgroundColor: "rgba(125, 118, 155, 0.2)"
+        activeOptionBackgroundColor: "rgba(125, 118, 155, 0.2)",
+        arrowColor: "#7D769BFF",
     },
 }

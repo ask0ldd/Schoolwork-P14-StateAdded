@@ -62,6 +62,7 @@ export const darkPurplePreset : IPreset = {
         hoverOptionTextColor: "#FFFFFF",
         optionsContainerBackgroundColor: "#1B1A23",
         optionsContainerBorderColor: "",
-        activeOptionBackgroundColor: ""
+        activeOptionBackgroundColor: "",
+        arrowColor: "#7D769BFF",
     },
 }

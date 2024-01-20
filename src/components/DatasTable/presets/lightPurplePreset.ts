@@ -61,6 +61,7 @@ export const lightPurplePreset : IPreset = {
         hoverOptionTextColor: "#FFFFFF",
         activeOptionBackgroundColor: "#dfdfdf",
         optionsContainerBackgroundColor: "#f6f6f6",
-        optionsContainerBorderColor: "#c5c5c5"
+        optionsContainerBorderColor: "#c5c5c5",
+        arrowColor: "#213547",
     },
 }

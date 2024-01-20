@@ -63,5 +63,6 @@ export interface IPreset {
         activeOptionBackgroundColor : string,
         hoverOptionBackgroundColor : string,
         hoverOptionTextColor : string,
+        arrowColor : string,
     },
 }

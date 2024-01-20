@@ -22,7 +22,8 @@ function SelectComboBox(){
         color: preset.selectEntriesPerPage.selectTextColor
     }
     const comboboxFocusStyle = {
-        background: preset.selectEntriesPerPage.selectBackgroundColor, 
+        background: preset.selectEntriesPerPage.selectBackgroundColor,
+        border:  "1px solid "+ preset.selectEntriesPerPage.selectBackgroundColor, 
         outline: "1px solid "+ preset.selectEntriesPerPage.focusSelectBorderColor, 
         color: preset.selectEntriesPerPage.selectTextColor
     }
@@ -36,7 +37,10 @@ function SelectComboBox(){
             aria-expanded={listbox.isExpanded} className={listbox.isExpanded ? "selectLabel selectLabel-active" : "selectLabel"}
         >
             {activeOption.get().label}
-            <img alt="dropdown arrow" className={listbox.isExpanded ? "customSelectOpen" : "customSelectArrow"} src="./icons/select-arrow.svg"/>
+            {/*<img alt="dropdown arrow" className={listbox.isExpanded ? "customSelectOpen" : "customSelectArrow"} src="./icons/select-arrow.svg"/>*/}
+            <svg className={listbox.isExpanded ? "customSelectOpen" : "customSelectArrow"} width="16" height="11" viewBox="0 0 16 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1.88 10.5466L8 4.43996L14.12 10.5466L16 8.66663L8 0.66663L1.64355e-07 8.66663L1.88 10.5466Z" fill={preset.selectEntriesPerPage.arrowColor}/>
+            </svg>
         </span>
     )
 }
