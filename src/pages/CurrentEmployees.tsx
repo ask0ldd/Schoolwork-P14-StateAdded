@@ -11,6 +11,7 @@ import { useTypedSelector } from '../redux/hook/typedHooks'
 import { darkGreenPreset } from '../components/DatasTable/presets/darkGreenPreset'
 import { basePreset } from '../components/DatasTable/presets/basePreset'
 import { darkPurplePreset } from '../components/DatasTable/presets/darkPurplePreset'
+import { lightPurplePreset } from '../components/DatasTable/presets/lightPurplePreset'
 
 /**
  * Component : Displaying the current employees datatable page.
@@ -36,7 +37,7 @@ function CurrentEmployees() {
     <>
       <Header pageTitle='Current Employees'/>
       <main className='mainCE'>
-        <DatasTable tableModel={tableModel} tableDatas={employeesList} preset={darkPurplePreset}/>
+        <DatasTable tableModel={tableModel} tableDatas={employeesList} preset={lightPurplePreset}/>
       </main>
       <Footer/>
     </>
