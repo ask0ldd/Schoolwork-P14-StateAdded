@@ -50,5 +50,15 @@ export interface IPreset {
     },
     nEntries : {
         textColor : string,
-    }
+    },
+    selectEntriesPerPage :
+    {
+        labelTextColor: string,
+        selectBackgroundColor: string,
+        selectTextColor:  string,
+        selectBorderColor: string,
+        focusSelectBorderColor: string,
+        hoverOptionBackgroundColor : string,
+        hoverOptionTextColor : string,
+    },
 }

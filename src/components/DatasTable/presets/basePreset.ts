@@ -50,5 +50,14 @@ export const basePreset : IPreset = {
     },
     nEntries : {
         textColor: "#213547",
-    }
+    },
+    selectEntriesPerPage: {
+        labelTextColor: "#454545",
+        selectBackgroundColor: "#f6f6f6",
+        selectTextColor: "#454545",
+        selectBorderColor: "#c5c5c5",
+        focusSelectBorderColor: "#0078d7",
+        hoverOptionBackgroundColor: "#0078d7",
+        hoverOptionTextColor: "#FFFFFF"
+    },
 }

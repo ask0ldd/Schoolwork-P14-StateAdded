@@ -1,6 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import { useContext } from 'react'
 import Select from './select/Select'
 import './style/NDisplayedSelect.css'
+import { DatasTableContext } from './DatasTableContext'
 
 /**
  * Component : A container hosting a select.
@@ -15,8 +17,10 @@ function NDisplayedSelect()
     /* should update select active option if 100 */
     // if(!dispatch) return(<></>)
 
+    const {preset} = useContext(DatasTableContext)
+
     return (
-        <div id="entriesContainer">
+        <div style={{color : preset.selectEntriesPerPage.labelTextColor}} id="entriesContainer">
             Show
             {/*<select onChange={e => updateNumberEntriesPerPage(e)}>
                 {
@@ -30,10 +34,6 @@ function NDisplayedSelect()
         </div>
     )
 
-    /**
-     * Update the number of entries per page.
-     * @param {React.ChangeEvent<HTMLSelectElement>} e - The event object.
-     */
     /*function updateNumberEntriesPerPage(e : React.ChangeEvent<HTMLSelectElement>){
         const currentPage = 1
         const nEntriesPerPage = e.target.value != null ? parseInt(e.target.value) : 50

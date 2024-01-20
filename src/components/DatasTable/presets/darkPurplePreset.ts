@@ -51,5 +51,14 @@ export const darkPurplePreset : IPreset = {
     },
     nEntries : {
         textColor: "#918AAD",
-    }
+    },
+    selectEntriesPerPage: {
+        labelTextColor: "rgba(125, 118, 155, 0.867)",
+        selectBackgroundColor: "rgb(27, 26, 35)",
+        selectTextColor: "rgb(145, 138, 173)",
+        selectBorderColor: "rgb(47, 45, 59)",
+        focusSelectBorderColor: "#693faf",
+        hoverOptionBackgroundColor: "#0078d7",
+        hoverOptionTextColor: "#FFFFFF",
+    },
 }

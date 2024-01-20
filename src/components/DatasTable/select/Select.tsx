@@ -23,13 +23,8 @@ function Select({ options, selectId } : IProps){ // should be able to pass the i
     const NDisplayedOptions = options || [ {label : '10', value : '10'}, {label : '25', value : '25'}, {label : '50', value : '50'}, {label : '100', value : '100'}]
     const {dispatch} = useContext(DatasTableContext)
 
-    // Updated state (always returning the non updated version) not accessible through event listeners => solution : tracking the state through a ref always updated simultaneously
-    // https://medium.com/geographit/accessing-react-state-in-event-listeners-with-usestate-and-useref-hooks-8cceee73c559
-    // The listener belongs to the initial render and is not updated on subsequent rerenders
-    const [activeOption, _setActiveOption] = useState<IOption>({...NDisplayedOptions[0]}) // deal with error if options missing
-    const activeOptionRef = useRef<IOption>(activeOption)
+    const activeOptionRef = useRef<IOption>({...NDisplayedOptions[0]})
     function setActiveOption(option : IOption){
-        _setActiveOption({...option})
         activeOptionRef.current = {...option}
         updateNumberEntriesPerPage(parseInt(option.value))
     }
@@ -52,7 +47,6 @@ function Select({ options, selectId } : IProps){ // should be able to pass the i
 
     useKeyboardHandler(
         selectId,
-        /*formGroupState,*/
         [...NDisplayedOptions], 
         activeOptionRef, 
         isListboxExpandedRef, 
@@ -63,7 +57,7 @@ function Select({ options, selectId } : IProps){ // should be able to pass the i
     return(
         <div className="selectContainer">
             <SelectContext.Provider value={{
-                selectId, options : NDisplayedOptions, activeOption : {get :  () => activeOption, set : setActiveOption}, 
+                selectId, options : NDisplayedOptions, activeOption : {get :  () => activeOptionRef.current, set : setActiveOption}, 
                 listbox : { isExpanded : isListboxExpanded, setAsExpanded : setListboxAsExpanded},
             }}>
                 <SelectComboBox/>
