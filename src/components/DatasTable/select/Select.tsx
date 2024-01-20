@@ -37,7 +37,7 @@ function Select({ options, selectId } : IProps){ // should be able to pass the i
      * Update the number of entries per page.
      * @param {React.ChangeEvent<HTMLSelectElement>} e - The event object.
      */
-    function updateNumberEntriesPerPage(e : React.ChangeEvent<HTMLSelectElement>){
+    function updateNumberEntriesPerPage(nEntries : number){
         const currentPage = 1
         const nEntriesPerPage = e.target.value != null ? parseInt(e.target.value) : 50
         dispatch && dispatch({type : "pagination", payload : {currentPage, nEntriesPerPage}})

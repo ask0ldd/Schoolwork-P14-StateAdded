@@ -16,7 +16,7 @@ function SelectComboBox(){
         onMouseDown={() => {listbox.setAsExpanded(!listbox.isExpanded)}} 
         tabIndex={0} aria-controls="customListbox" id={selectId + "SelectLabel"} role="combobox" 
         aria-haspopup="listbox" aria-activedescendant={activeOption.get().value}
-        aria-expanded={listbox.isExpanded} className={listbox.isExpanded ? "customSelectLabel customSelectLabel-active" : "customSelectLabel"}
+        aria-expanded={listbox.isExpanded} className={listbox.isExpanded ? "selectLabel selectLabel-active" : "selectLabel"}
         >
             {activeOption.get().label}
             <img alt="dropdown arrow" className={listbox.isExpanded ? "customSelectOpen" : "customSelectArrow"} src="./icons/select-arrow.svg"/>
