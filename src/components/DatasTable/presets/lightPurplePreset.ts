@@ -9,8 +9,7 @@ export const lightPurplePreset : IPreset = {
         textColor: "#213547",
         fontWeight: "600",
         backgroundColor: "none",
-        arrowInactiveColor: "#ddd",
-        arrowActiveColor: "#d422f0",
+        arrow : {activeColor : "#5e30b4bb", inactiveColor : "#ddd"},
         separatorColor: "#111"
     },
     evenRow: {
@@ -29,7 +28,7 @@ export const lightPurplePreset : IPreset = {
         hoverTextColor : "#FFFFFF",
         bottomSeparatorColor: "#DDDDDD",
     },
-    firstnLastRowSeparatorsColor: "#d422f0",
+    firstnLastRowSeparatorsColor: "#5e30b4bb",
     paginationButton: {
         backgroundColor: "linear-gradient(to bottom, #fff 0%, #dcdcdc 100%)", 
         textColor: "#213547",

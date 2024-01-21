@@ -1,3 +1,7 @@
+/*
+add font size
+*/
+
 export interface IPreset {
     global :{
         font : string,
@@ -7,33 +11,26 @@ export interface IPreset {
         textColor : string,
         fontWeight: string,
         backgroundColor : string,
-        arrowInactiveColor : string,
-        arrowActiveColor : string,
+        arrow : {activeColor : string, inactiveColor : string}
         separatorColor : string
     },
     evenRow : {
-        backgroundColor : string,
-        textColor : string,
+        backgroundColor : {default : string, hover : string},
+        textColor : {default : string, hover : string},
         fontWeight: string,
-        hoverBackgroundColor : string,
-        hoverTextColor : string,
         bottomSeparatorColor : string,
     },
     oddRow : {
-        backgroundColor : string,
-        textColor : string,
+        backgroundColor : {default : string, hover : string},
+        textColor : {default : string, hover : string},
         fontWeight: string,
-        hoverBackgroundColor : string,
-        hoverTextColor : string,
         bottomSeparatorColor : string,
     },
     firstnLastRowSeparatorsColor: string,
     paginationButton :
     {
-        backgroundColor : string,
-        textColor : string,
-        hoverBackgroundColor : string,
-        hoverTextColor : string,
+        backgroundColor : {default : string, hover : string},
+        textColor : {default : string, hover : string},
         hoverDropShadowColor : string,
         borderColor : string,
     },
@@ -45,8 +42,7 @@ export interface IPreset {
         labelTextColor: string,
         inputBackgroundColor: string,
         inputTextColor:  string,
-        inputBorderColor: string,
-        focusInputBorderColor: string,
+        inputBorderColor: {default : string, focus : string},
     },
     nEntries : {
         textColor : string,

@@ -10,8 +10,7 @@ export const darkPurplePreset : IPreset = {
         textColor: "#918AAD",
         fontWeight: "600",
         backgroundColor: "#1B1A23",
-        arrowInactiveColor: "#7D769BFF",
-        arrowActiveColor: "#693faf",
+        arrow : { activeColor : "#693faf", inactiveColor : "#7D769BFF" },
         separatorColor: "#2F2D3B"
     },
     evenRow: {
