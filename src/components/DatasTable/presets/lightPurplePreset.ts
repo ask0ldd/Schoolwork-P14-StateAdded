@@ -13,27 +13,21 @@ export const lightPurplePreset : IPreset = {
         separatorColor: "#111"
     },
     evenRow: {
-        backgroundColor: "none",
-        textColor: "#213547",
+        backgroundColor : {default : "none", hover : "linear-gradient(90deg, #d422f0aa, #5e30b4bb)"},
+        textColor : {default : "#213547", hover : "#FFFFFF"},
         fontWeight: "400",
-        hoverBackgroundColor: "linear-gradient(90deg, #d422f0aa, #5e30b4bb)",
-        hoverTextColor : "#FFFFFF",
         bottomSeparatorColor: "#DDDDDD",
     },
     oddRow: {
-        backgroundColor: "#f6f6f6",
-        textColor: "#213547",
+        backgroundColor : {default : "#f6f6f6", hover : "linear-gradient(90deg, #d422f0aa, #5e30b4bb)"},
+        textColor : {default : "#213547", hover : "#FFFFFF"},
         fontWeight: "400",
-        hoverBackgroundColor: "linear-gradient(90deg, #d422f0aa, #5e30b4bb)",/* */
-        hoverTextColor : "#FFFFFF",
         bottomSeparatorColor: "#DDDDDD",
     },
     firstnLastRowSeparatorsColor: "#5e30b4bb",
     paginationButton: {
-        backgroundColor: "linear-gradient(to bottom, #fff 0%, #dcdcdc 100%)", 
-        textColor: "#213547",
-        hoverBackgroundColor: "#5e30b4bb",
-        hoverTextColor: "#ffffffcc",
+        backgroundColor : {default : "linear-gradient(to bottom, #fff 0%, #dcdcdc 100%)", hover : "#5e30b4bb"},
+        textColor : {default : "#213547", hover : "#ffffffcc"},
         hoverDropShadowColor : "#5e30b4bb",
         borderColor: "#979797",
     },
@@ -44,8 +38,7 @@ export const lightPurplePreset : IPreset = {
         labelTextColor: "#454545",
         inputBackgroundColor: "#f6f6f6",
         inputTextColor: "#454545",
-        inputBorderColor: "#c5c5c5",
-        focusInputBorderColor: "#5e30b4bb"
+        inputBorderColor: {default : "#c5c5c5", focus : "#5e30b4bb"},
     },
     nEntries : {
         textColor: "#213547",
