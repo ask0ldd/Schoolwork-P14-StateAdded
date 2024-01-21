@@ -48,13 +48,11 @@ export const darkPurplePreset : IPreset = {
         labelTextColor: "rgba(125, 118, 155, 0.867)",
         selectBackgroundColor: "rgb(27, 26, 35)",
         selectTextColor: "rgb(145, 138, 173)",
-        selectBorderColor: "rgb(47, 45, 59)",
-        focusSelectBorderColor: "#693faf",
-        hoverOptionBackgroundColor: "#693faf",
         hoverOptionTextColor: "#FFFFFF",
         optionsContainerBackgroundColor: "#1B1A23",
-        optionsContainerBorderColor: "",
-        activeOptionBackgroundColor: "",
+        optionsContainerBorderColor: "rgba(125, 118, 155, 0.867)",
         arrowColor: "#7D769BFF",
+        selectBorderColor: {default : "rgb(47, 45, 59)", focus : "#693faf"},
+        optionBackgroundColor : {active : "rgba(125, 118, 155, 0.2)", hover : "#693faf"}
     },
 }

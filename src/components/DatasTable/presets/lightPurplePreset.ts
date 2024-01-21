@@ -47,13 +47,11 @@ export const lightPurplePreset : IPreset = {
         labelTextColor: "#454545",
         selectBackgroundColor: "#f6f6f6",
         selectTextColor: "#454545",
-        selectBorderColor: "#c5c5c5",
-        focusSelectBorderColor: "#5e30b4bb",
-        hoverOptionBackgroundColor: "#5e30b4bb",
         hoverOptionTextColor: "#FFFFFF",
-        activeOptionBackgroundColor: "#dfdfdf",
         optionsContainerBackgroundColor: "#f6f6f6",
         optionsContainerBorderColor: "#c5c5c5",
         arrowColor: "#213547",
+        selectBorderColor: {default : "#c5c5c5", focus : "#5e30b4bb"},
+        optionBackgroundColor : {active : "#dfdfdf", hover : "#5e30b4bb"}
     },
 }

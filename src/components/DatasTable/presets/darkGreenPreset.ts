@@ -48,13 +48,11 @@ export const darkGreenPreset : IPreset = {
         labelTextColor: "rgba(125, 118, 155, 0.867)",
         selectBackgroundColor: "rgb(27, 26, 35)",
         selectTextColor: "rgb(145, 138, 173)",
-        selectBorderColor: "rgb(47, 45, 59)",
-        focusSelectBorderColor: "#30B383",
-        hoverOptionBackgroundColor: "#30B383",
         hoverOptionTextColor: "#FFFFFF",
         optionsContainerBackgroundColor: "#1B1A23",
         optionsContainerBorderColor: "rgba(125, 118, 155, 0.867)",
-        activeOptionBackgroundColor: "rgba(125, 118, 155, 0.2)",
         arrowColor: "#7D769BFF",
+        selectBorderColor: {default : "rgb(47, 45, 59)", focus : "#30B383"},
+        optionBackgroundColor : {active : "rgba(125, 118, 155, 0.2)", hover : "#30B383"}
     },
 }

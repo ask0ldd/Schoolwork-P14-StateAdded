@@ -47,13 +47,11 @@ export const basePreset : IPreset = {
         labelTextColor: "#454545",
         selectBackgroundColor: "#f6f6f6",
         selectTextColor: "#454545",
-        selectBorderColor: "#c5c5c5",
-        focusSelectBorderColor: "#0078d7",
-        hoverOptionBackgroundColor: "#0078d7",
         hoverOptionTextColor: "#FFFFFF",
-        activeOptionBackgroundColor: "#dfdfdf",
         optionsContainerBackgroundColor: "#f6f6f6",
         optionsContainerBorderColor: "#c5c5c5",
         arrowColor: "#213547",
+        selectBorderColor: {default : "#c5c5c5", focus : "#0078d7"},
+        optionBackgroundColor : {active : "#dfdfdf", hover : "#0078d7"}
     },
 }
