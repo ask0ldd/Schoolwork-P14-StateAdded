@@ -14,27 +14,21 @@ export const darkPurplePreset : IPreset = {
         separatorColor: "#2F2D3B"
     },
     evenRow: {
-        backgroundColor: "#0A0A12",
-        textColor: "#7D769BDD",
+        backgroundColor : {default : "#0A0A12", hover : "linear-gradient(270deg, #4a2e7a, #693faf)"},
+        textColor : {default : "#7D769BDD", hover : "#FFFFFF"},
         fontWeight: "500",
-        hoverBackgroundColor: "linear-gradient(270deg, #4a2e7a, #693faf)",
-        hoverTextColor : "#FFFFFF",
         bottomSeparatorColor: "#2F2D3B",
     },
     oddRow: {
-        backgroundColor: "#1B1A23",
-        textColor: "#7D769BDD",
+        backgroundColor : {default : "#1B1A23", hover : "linear-gradient(270deg, #4a2e7a, #693faf)"},
+        textColor : {default : "#7D769BDD", hover : "#FFFFFF"},
         fontWeight: "500",
-        hoverBackgroundColor: "#4a2e7a",
-        hoverTextColor : "#FFFFFF",
         bottomSeparatorColor: "#2F2D3B",
     },
     firstnLastRowSeparatorsColor: "#693faf",
     paginationButton: {
-        backgroundColor: "#1B1A23",
-        textColor: "#7D769BDD",
-        hoverBackgroundColor: "#6d40b9",
-        hoverTextColor: "#FFFFFFFF",
+        backgroundColor : {default : "#1B1A23", hover : "#6d40b9"},
+        textColor : {default : "#7D769BDD", hover : "#FFFFFF"},
         hoverDropShadowColor : "#6d40b999",
         borderColor: "#2F2D3B",
     },
@@ -45,8 +39,7 @@ export const darkPurplePreset : IPreset = {
         labelTextColor: "rgba(125, 118, 155, 0.867)",
         inputBackgroundColor: "rgb(27, 26, 35)",
         inputTextColor: "rgb(145, 138, 173)",
-        inputBorderColor: "rgb(47, 45, 59)",
-        focusInputBorderColor: "#693faf"
+        inputBorderColor: {default : "rgb(47, 45, 59)", focus : "#693faf"},
     },
     nEntries : {
         textColor: "#918AAD",
