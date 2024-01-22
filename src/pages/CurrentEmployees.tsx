@@ -12,6 +12,7 @@ import { darkGreenPreset } from '../components/DatasTable/presets/darkGreenPrese
 import { basePreset } from '../components/DatasTable/presets/basePreset'
 import { darkPurplePreset } from '../components/DatasTable/presets/darkPurplePreset'
 import { lightPurplePreset } from '../components/DatasTable/presets/lightPurplePreset'
+import { IPreset } from '../components/DatasTable/interfaces/IPreset'
 
 /**
  * Component : Displaying the current employees datatable page.
@@ -37,7 +38,7 @@ function CurrentEmployees() {
     <>
       <Header pageTitle='Current Employees'/>
       <main className='mainCE'>
-        <DatasTable tableModel={tableModel} tableDatas={employeesList} preset={lightPurplePreset}/>
+        <DatasTable tableModel={tableModel} tableDatas={employeesList} preset={basePreset}/>
       </main>
       <Footer/>
     </>
