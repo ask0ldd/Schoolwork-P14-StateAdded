@@ -9,6 +9,7 @@ export const basePreset : IPreset = {
     global: {
         font: "'Jost', sans-serif",
         textColor: "#213547",
+        backgroundColor : "#FFFFFF",
     },
     th: {
         textColor: "#213547",
