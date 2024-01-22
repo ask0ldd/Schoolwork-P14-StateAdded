@@ -59,4 +59,7 @@ export const basePreset : IPreset = {
         selectBorderColor: {default : "#c5c5c5", focus : "#0078d7"},
         optionBackgroundColor : {active : "#dfdfdf", hover : "#0078d7"}
     },
+    setGlobalFont : function (font : string) {
+        return {...this, global : {...this.global, font : font}} as IPreset
+    },
 }
