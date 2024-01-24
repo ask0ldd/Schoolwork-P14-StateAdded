@@ -39,9 +39,8 @@ function CurrentEmployees() {
       <Header pageTitle='Current Employees'/>
       <main className='mainCE'>
         <DatasTable tableModel={tableModel} tableDatas={employeesList} preset={
-          basePreset.setEvenRowsStyle({background:'white', separatorColor:'red'})
-          .setBordersColors({_default : 'green', focus : 'yellow'})
-          }/>
+          basePreset.get()
+        }/>
       </main>
       <Footer/>
     </>
