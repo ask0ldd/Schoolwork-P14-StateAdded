@@ -70,18 +70,36 @@ export const basePreset : IPreset = {
         } as IPreset;
     },
     setSeparatorColor: function (color: string): IPreset {
-        throw new Error("Function not implemented.");
+        return { ...this, 
+            firstnLastRowSeparatorsColor : color
+        } as IPreset;
     },
     setTHStyle: function ({ textColor, background, arrowColor, activeArrowColor }: { textColor: string; background: string; arrowColor: string; activeArrowColor: string; }): IPreset {
-        throw new Error("Function not implemented.");
+        return { ...this, 
+            th : {...this.th,
+                textColor,
+                backgroundColor : background,
+                arrow : {activeColor : activeArrowColor, inactiveColor : arrowColor}
+            }
+        } as IPreset;
     },
     setHoveredElementsStyle: function ({ textColor, background }: { textColor: string; background: string; }): IPreset {
-        throw new Error("Function not implemented.");
+        throw new Error("Function not implemented." + textColor + background);
     },
     setOddRowsStyle: function ({ background, separatorColor }: { background: string; separatorColor: string; }): IPreset {
-        throw new Error("Function not implemented.");
+        return { ...this, 
+            oddRow : {...this.oddRow,
+                backgroundColor : {...this.oddRow.backgroundColor, default: background},
+                bottomSeparatorColor : separatorColor,
+            }
+        } as IPreset;
     },
-    setEvenRowsStyle: function ({ background, separatorColor }: { background: string; separatorColor: string; }): IPreset {
-        throw new Error("Function not implemented.");
+    setEvenRowsStyle: function ({ background, separatorColor }: { background: string; separatorColor: string;}): IPreset {
+        return { ...this, 
+            evenRow : {...this.evenRow,
+                backgroundColor : {...this.evenRow.backgroundColor, default: background},
+                bottomSeparatorColor : separatorColor,
+            }
+        } as IPreset;
     }
 }
