@@ -39,7 +39,7 @@ function CurrentEmployees() {
       <Header pageTitle='Current Employees'/>
       <main className='mainCE'>
         <DatasTable tableModel={tableModel} tableDatas={employeesList} preset={
-          basePreset.setBordersColors({ _default : 'red', focus : 'yellow'}).get()
+          basePreset.setHoveredElementsStyle({textColor: "#FFFFFF", background:'#FF0000'}).get()
         }/>
       </main>
       <Footer/>

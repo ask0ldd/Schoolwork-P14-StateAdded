@@ -3,7 +3,6 @@ import PresetClass from "./PresetClass";
 /* eslint-disable @typescript-eslint/no-unused-vars */
 export const basePreset = new PresetClass(
     {
-        // table : { backgroundColor : "#FFFFFF", },
         global: {
             font: "'Jost', sans-serif",
             textColor: "#213547",

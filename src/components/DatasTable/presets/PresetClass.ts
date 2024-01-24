@@ -69,8 +69,32 @@ class PresetClass {
         return this
     }
 
+    /**
+     * Set the style for all elements the hoverable elements.
+     * @param {Object} options - The style options for the hover effect.
+     * @param {string} options.textColor - The text color for the hover effect.
+     * @param {string} options.background - The background color for the hover effect.
+     * @returns {PresetClass} - The updated preset class.
+     */
     setHoveredElementsStyle ({ textColor, background }: { textColor: string; background: string; }): PresetClass {
-        throw new Error("Function not implemented." + textColor + background);
+        this.#set({ ...this.#preset, 
+            selectEntriesPerPage : {...this.#preset.selectEntriesPerPage,
+                optionBackgroundColor: {...this.#preset.selectEntriesPerPage.optionBackgroundColor, hover: background },
+                hoverOptionTextColor : textColor
+            },
+            oddRow : {...this.#preset.oddRow,
+                backgroundColor : {...this.#preset.oddRow.backgroundColor, hover: background},
+            },
+            evenRow : {...this.#preset.evenRow,
+                backgroundColor : {...this.#preset.evenRow.backgroundColor, hover: background},
+            },
+            paginationButton : {...this.#preset.paginationButton,
+                backgroundColor: {...this.#preset.paginationButton.backgroundColor, hover: background},
+                textColor: {...this.#preset.paginationButton.textColor, hover: textColor},
+                hoverDropShadowColor : background.length === 7 || background.length === 9 ? (background.length === 7 ? background + "33" : background) : ("none"),
+            },
+        } as IPreset)
+        return this
     }
 
     /**
