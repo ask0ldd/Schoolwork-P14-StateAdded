@@ -32,7 +32,7 @@ class PresetClass {
     }
 
     /**
-     * @param {{ _default: string; focus: string; }} colors - The default & the focus border colors of the searchbar / dropdown
+     * @param {{ _default: string; focus: string; }} colors - The border colors of the searchbar / dropdown depending on its state
      * @returns {PresetClass}
      */
     setBordersColors ({ _default, focus }: { _default: string; focus: string; }): PresetClass {
