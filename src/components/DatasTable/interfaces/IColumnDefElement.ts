@@ -6,5 +6,5 @@ export interface IColumnDefElement
   accessor : string | null
   sortable : boolean
   datatype : 'string' | 'number' | 'date' | 'custom_component' | null
-  component? : ReactNode | null
+  component? : (() => ReactNode) | null
 }

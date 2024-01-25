@@ -10,7 +10,7 @@ export class ColumnBuilder {
     #accessor : string | null = null
     #sortable = false
     #datatype : "string" | "number" | "date" | "custom_component" | null = null
-    #customComponent : ReactNode | null
+    #customComponent : (() => ReactNode) | null = null
   
     /**
      * Start building a new column.
@@ -21,6 +21,7 @@ export class ColumnBuilder {
       this.#accessor = null
       this.#sortable = false
       this.#datatype = null
+      this.#customComponent = null
       return this
     }
   
@@ -40,6 +41,7 @@ export class ColumnBuilder {
      * @returns {ColumnBuilder} - The column builder instance.
      */
     setAccessor(accessor : string){
+      if(accessor == "custom_component") throw new Error("custom_component accessor is reserved word")
       this.#accessor = accessor
       return this
     }
@@ -104,10 +106,9 @@ export class ColumnBuilder {
      * The column will contain a Custom Component.
      * @returns {ColumnBuilder}
      */
-    setCustomComponent(customComponent : ReactNode){
+    setCustomComponent(customComponent : () => ReactNode){
       this.#datatype = "custom_component"
-      this.#th = ""
-      this.#accessor = ""
+      this.#accessor = null
       this.#customComponent = customComponent
       this.#sortable = false
       return this
@@ -120,7 +121,7 @@ export class ColumnBuilder {
     build(){
       try{
         // if #customComponent is a valid ReactNode
-        if(isValidElement(this.#customComponent) && this.#datatype === "custom_component") return new Column(this.#th, this.#accessor, this.#sortable, this.#datatype, this.#customComponent)
+        if(this.#customComponent != null && isValidElement(this.#customComponent()) && this.#datatype === "custom_component") return new Column(this.#th, this.#accessor, this.#sortable, this.#datatype, this.#customComponent)
         // if not th / accessoir / datatype are mandatory
         if(this.#th == null || this.#accessor == null || this.#datatype == null ) throw new Error("Can't be built : Column definition incomplete.")
         return new Column(this.#th, this.#accessor, this.#sortable, this.#datatype)

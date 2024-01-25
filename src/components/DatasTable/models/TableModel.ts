@@ -40,7 +40,7 @@ export class TableModel{
      */
     getColumnsNamesList() : Array<string>{
         return this.#columns.reduce((accu : Array<string>, column) => {
-          if(column.component != null || column.th == null) return accu
+          if(column.th == null) return accu
           accu.push(column.th); return accu
         }, [])
     }
@@ -49,9 +49,9 @@ export class TableModel{
      * Get the list of accessors.
      * @returns {Array<string>} Array of accessors.
      */  
-    getAccessorsList() : Array<string>{
-      return this.#columns.reduce((accu : Array<string>, column) => {
-        if(column.component != null || column.accessor == null) return accu
+    getAccessorsList() : Array<string | null>{
+      return this.#columns.reduce((accu : Array<string | null>, column) => {
+        if(column.component == null && column.accessor == null) return accu
         accu.push(column.accessor)
         return accu
       }, [])

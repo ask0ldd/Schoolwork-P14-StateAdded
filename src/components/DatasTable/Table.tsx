@@ -55,8 +55,9 @@ function Table() {
                 : {...isRowOdd(index) ? oddRowPreset : evenRowPreset, 
                 borderBottom : isLastRow(index, rowsToDisplay.length-1) ? 'none' : (isRowOdd(index) ? oddRowPreset.borderBottom : evenRowPreset.borderBottom)}} 
                 key={'trtable-'+index} className={isRowOdd(index) + isLastRow(index, rowsToDisplay.length-1)}>
-              {[...tableAccessors].map((key : string) => (
-                <td key={'tdtable-'+key+'-'+index}>{datarow[key as keyof typeof datarow]}</td>
+              {[...tableAccessors].map((key : string | null) => (
+                <td key={'tdtable-'+key+'-'+index}>{key && datarow[key as keyof typeof datarow]}</td>
+                // should display custom components
               ))}
             </tr>
           ))}
