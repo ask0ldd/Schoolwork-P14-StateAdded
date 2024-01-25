@@ -98,33 +98,38 @@ class PresetClass {
     }
 
     /**
-     * @param {{ background: string; separatorColor: string; }} style - The odd rows style
+     * Set the style for the Odd Rows
+     * @param {{ background: string; separatorColor: string; textColor? : string;}} style - The odd rows style
      * @returns {PresetClass}
      */
-    setOddRowsStyle ({ background, separatorColor }: { background: string; separatorColor: string; }): PresetClass {
+    setOddRowsStyle ({ background, separatorColor, textColor }: { background: string; separatorColor: string; textColor? : string;}): PresetClass {
         this.#set({ ...this.#preset, 
             oddRow : {...this.#preset.oddRow,
                 backgroundColor : {...this.#preset.oddRow.backgroundColor, default: background},
                 bottomSeparatorColor : separatorColor,
+                textColor : textColor ? {...this.#preset.oddRow.textColor, default : textColor} : {...this.#preset.oddRow.textColor},
             }
         } as IPreset)
         return this
     }
 
     /**
-     * @param {{ background: string; separatorColor: string; }} style - The even rows style
+     * Set the style for the Even Rows
+     * @param {{ background: string; separatorColor: string; textColor? : string;}} style - The even rows style
      * @returns {PresetClass}
      */
-    setEvenRowsStyle ({ background, separatorColor }: { background: string; separatorColor: string;}): PresetClass {
+    setEvenRowsStyle ({ background, separatorColor, textColor }: { background: string; separatorColor: string; textColor? : string;}): PresetClass {
         this.#set({ ...this.#preset, 
             evenRow : {...this.#preset.evenRow,
                 backgroundColor : {...this.#preset.evenRow.backgroundColor, default: background},
                 bottomSeparatorColor : separatorColor,
+                textColor : textColor ? {...this.#preset.evenRow.textColor, default : textColor} : {...this.#preset.evenRow.textColor},
             }
         } as IPreset)
         return this
     }
 
+    // !!! set pagination buttons color
 }
 
 export default PresetClass
