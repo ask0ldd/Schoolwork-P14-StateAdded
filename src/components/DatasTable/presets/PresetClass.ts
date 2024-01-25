@@ -23,11 +23,22 @@ class PresetClass {
     }
 
     /**
+     * Set Global Font
      * @param {string} font - The global font
      * @returns {PresetClass}
      */
     setGlobalFont (font: string): PresetClass {
         this.#set({ ...this.#preset, global: { ...this.#preset.global, font: font } } as IPreset)
+        return this
+    }
+
+    /**
+     * Set Global Text Color
+     * @param {string} color - The global text color
+     * @returns {PresetClass}
+     */
+    setGlobalTextColor (color: string): PresetClass {
+        this.#set({ ...this.#preset, global: { ...this.#preset.global, textColor: color } } as IPreset)
         return this
     }
 
