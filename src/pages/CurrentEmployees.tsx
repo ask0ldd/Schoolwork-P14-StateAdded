@@ -33,6 +33,7 @@ function CurrentEmployees() {
   tableModel.addColumn(new ColumnBuilder().setColumnName("City").setDatatypeAsString().setAccessor("city").setSortability(true).build())
   tableModel.addColumn(new ColumnBuilder().setColumnName("State").setDatatypeAsString().setAccessor("state").setSortability(true).build())
   tableModel.addColumn(new ColumnBuilder().setColumnName("Zip Code").setDatatypeAsNumber().setAccessor("zipCode").setSortability(true).build())
+  tableModel.addColumn(new ColumnBuilder().setColumnName("test").setCustomComponent(customComp()).build())
 
   return (
     <>
@@ -50,3 +51,11 @@ function CurrentEmployees() {
 }
 
 export default CurrentEmployees
+
+function customComp(){
+  return(
+  <>
+    aaaa
+  </>
+  )
+}

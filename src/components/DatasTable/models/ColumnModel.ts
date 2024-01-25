@@ -1,23 +1,26 @@
+import { ReactNode } from "react"
 import { IColumnDefElement } from "../interfaces/IColumnDefElement"
 
 export class Column {
     #th : string | null
     #accessor : string | null
     #sortable : boolean
-    #datatype : 'string' | 'number' | 'date' | null
+    #datatype : 'string' | 'number' | 'date' | 'custom_component' | null
+    #customComponent : ReactNode | null
   
     /**
      * Creates a new Column.
      * @param {string} th - The column header.
      * @param {string} accessor - The accessor for the column.
      * @param {boolean} sortable - Indicates if the column is sortable.
-     * @param {'string' | 'number' | 'date' | null} datatype - The data type of the column.
+     * @param {'string' | 'number' | 'date' | 'custom_component' | null} datatype - The data type of the column.
      */
-    constructor(th : string, accessor: string, sortable : boolean, datatype : 'string' | 'number' | 'date'){
+    constructor(th : string, accessor: string, sortable : boolean, datatype : 'string' | 'number' | 'date' | 'custom_component', customComponent : ReactNode){
       this.#th = th
       this.#accessor = accessor
       this.#sortable = sortable
       this.#datatype = datatype
+      this.#customComponent = customComponent
     }
     
     /**

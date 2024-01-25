@@ -1,3 +1,4 @@
+import { ReactNode, isValidElement } from "react"
 import { Column } from "../models/ColumnModel"
 
 /**
@@ -8,7 +9,8 @@ export class ColumnBuilder {
     #th : string | null = null
     #accessor : string | null = null
     #sortable = false
-    #datatype : "string" | "number" | "date" | null = null
+    #datatype : "string" | "number" | "date" | "custom_component" | null = null
+    #customComponent : ReactNode | null
   
     /**
      * Start building a new column.
@@ -57,7 +59,8 @@ export class ColumnBuilder {
      * @param {"string" | "number" | "date"} datatype - The type of data for the column.
      * @returns {ColumnBuilder} - The column builder instance.
      */
-    setDatatype(datatype : "string" | "number" | "date"){
+    setDatatype(datatype : "string" | "number" | "date" | "custom_component"){
+      if(this.#datatype === "custom_component") return this
       this.#datatype = datatype
       return this
     }
@@ -67,6 +70,7 @@ export class ColumnBuilder {
      * @returns {ColumnBuilder}
      */
     setDatatypeAsString(){
+      if(this.#datatype === "custom_component") return this
       this.#datatype = "string"
       return this
     }
@@ -76,6 +80,7 @@ export class ColumnBuilder {
      * @returns {ColumnBuilder}
      */
     setDatatypeAsNumber(){
+      if(this.#datatype === "custom_component") return this
       this.#datatype = "number"
       return this
     }
@@ -85,7 +90,26 @@ export class ColumnBuilder {
      * @returns {ColumnBuilder}
      */
     setDatatypeAsDate(){
+      if(this.#datatype === "custom_component") return this
       this.#datatype = "date"
+      return this
+    }
+
+    setDatatypeAsCustomComponent(){
+      this.#datatype = "custom_component"
+      return this
+    }
+
+    /**
+     * The column will contain a Custom Component.
+     * @returns {ColumnBuilder}
+     */
+    setCustomComponent(customComponent : ReactNode){
+      this.#datatype = "custom_component"
+      this.#th = ""
+      this.#accessor = ""
+      this.#customComponent = customComponent
+      this.#sortable = false
       return this
     }
   
@@ -95,8 +119,10 @@ export class ColumnBuilder {
      */
     build(){
       try{
+        // checks if #customComponent is valid ReactNode
+        if(isValidElement(this.#customComponent)) return 
         if(this.#th == null || this.#accessor == null || this.#datatype == null ) throw new Error("Can't be built : Column definition incomplete.")
-        return new Column(this.#th, this.#accessor, this.#sortable, this.#datatype)
+        return new Column(this.#th, this.#accessor, this.#sortable, this.#datatype, this.#customComponent)
       }catch (e){
         console.error(e)
         return undefined
