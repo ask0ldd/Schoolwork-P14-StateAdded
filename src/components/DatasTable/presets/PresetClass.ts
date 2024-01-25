@@ -37,10 +37,10 @@ class PresetClass {
      * @param {string} color - The global text color
      * @returns {PresetClass}
      */
-    setGlobalTextColor (color: string): PresetClass {
+    /*setGlobalTextColor (color: string): PresetClass {
         this.#set({ ...this.#preset, global: { ...this.#preset.global, textColor: color } } as IPreset)
         return this
-    }
+    }*/
 
     /**
      * @param {{ _default: string; focus: string; }} colors - The border colors of the searchbar / dropdown depending on its state
@@ -55,6 +55,7 @@ class PresetClass {
     }
 
     /**
+     * Set the Last & First Separators Color
      * @param {string} color - The first & last separators color
      * @returns {PresetClass}
      */
@@ -66,6 +67,7 @@ class PresetClass {
     }
 
     /**
+     * Set the Header Style
      * @param {{ textColor: string; background: string; arrowColor: string; activeArrowColor: string; }} style - The table header style
      * @returns {PresetClass}
      */
@@ -81,7 +83,7 @@ class PresetClass {
     }
 
     /**
-     * Set the style for all elements the hoverable elements.
+     * Set the Style for all the Hoverable Elements.
      * @param {Object} options - The style options for the hover effect.
      * @param {string} options.textColor - The text color for the hover effect.
      * @param {string} options.background - The background color for the hover effect.

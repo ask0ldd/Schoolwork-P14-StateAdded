@@ -39,7 +39,9 @@ function CurrentEmployees() {
       <Header pageTitle='Current Employees'/>
       <main className='mainCE'>
         <DatasTable tableModel={tableModel} tableDatas={employeesList} preset={
-          basePreset.setHoveredElementsStyle({textColor: "#FFFFFF", background:'#FF0000'}).get()
+          basePreset/*.setHoveredElementsStyle({textColor: "#FFFFFF", background:'#FF0000'})
+          .setOddRowsStyle({background:'#dddddd', separatorColor: '#aaaaaa', textColor : "blue"})*/
+          .get()
         }/>
       </main>
       <Footer/>
