@@ -119,10 +119,11 @@ export class ColumnBuilder {
      */
     build(){
       try{
-        // checks if #customComponent is valid ReactNode
-        if(isValidElement(this.#customComponent)) return 
+        // if #customComponent is a valid ReactNode
+        if(isValidElement(this.#customComponent) && this.#datatype === "custom_component") return new Column(this.#th, this.#accessor, this.#sortable, this.#datatype, this.#customComponent)
+        // if not th / accessoir / datatype are mandatory
         if(this.#th == null || this.#accessor == null || this.#datatype == null ) throw new Error("Can't be built : Column definition incomplete.")
-        return new Column(this.#th, this.#accessor, this.#sortable, this.#datatype, this.#customComponent)
+        return new Column(this.#th, this.#accessor, this.#sortable, this.#datatype)
       }catch (e){
         console.error(e)
         return undefined
