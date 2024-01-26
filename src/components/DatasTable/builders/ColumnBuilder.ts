@@ -38,12 +38,10 @@ export class ColumnBuilder {
       return this
     }
 
-    /*
-    setColumnNameAlignment(alignment : 'left' | 'center' | 'right'){
+    setColumnNameTextAlignment(alignment : 'left' | 'center' | 'right'){
       this.#thAlignment = alignment
       return this
     }
-    */
   
     /**
      * Set the key from the data object pointing to the value used to fill the column.
@@ -135,7 +133,7 @@ export class ColumnBuilder {
         if(this.#customComponent != null && isValidElement(this.#customComponent(1)) && this.#datatype === "custom_component") return new Column(this.#th, this.#accessor, this.#sortable, this.#datatype, this.#customComponent, this.#thAlignment)
         // if it contains datas : th / accessoir / datatype => mandatory
         if(this.#th == null || this.#accessor == null || this.#datatype == null ) throw new Error("Can't be built : Column definition incomplete.")
-        return new Column(this.#th, this.#accessor, this.#sortable, this.#datatype)
+        return new Column(this.#th, this.#accessor, this.#sortable, this.#datatype, null, this.#thAlignment)
       }catch (e){
         console.error(e)
         return undefined

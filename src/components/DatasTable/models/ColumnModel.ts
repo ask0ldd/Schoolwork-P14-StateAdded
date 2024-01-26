@@ -16,13 +16,14 @@ export class Column {
      * @param {boolean} sortable - Indicates if the column is sortable.
      * @param {'string' | 'number' | 'date' | 'custom_component' | null} datatype - The data type of the column.
      * @param {TCustomComponent} customComponent - Component populating all cells of the column.
+     * @param {'left' | 'center' | 'right'} thAlignment - Horizontal Alignment for the TH text of the column.
      */
     constructor(
       th : string | null, 
       accessor: string | null, 
       sortable : boolean, 
       datatype : 'string' | 'number' | 'date' | 'custom_component' | null, 
-      customComponent? : TCustomComponent,
+      customComponent? : TCustomComponent | null,
       thAlignment? : 'left' | 'center' | 'right')
     {
       this.#th = th
@@ -40,6 +41,6 @@ export class Column {
     toObject() : IColumnDefElement | undefined {
       if(this.#customComponent != null) return({th : this.#th, accessor : this.#accessor, sortable : this.#sortable, datatype : this.#datatype, component : this.#customComponent, thAlignment : this.#thAligment})
       if(this.#th == null || this.#accessor == null || this.#datatype == null ) return undefined // { th: '', datakey: '', sortable: true, datatype: '' }
-      return({th : this.#th, accessor : this.#accessor, sortable : this.#sortable, datatype : this.#datatype})
+      return({th : this.#th, accessor : this.#accessor, sortable : this.#sortable, datatype : this.#datatype, thAlignment : this.#thAligment})
     }
   }

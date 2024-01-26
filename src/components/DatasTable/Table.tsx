@@ -39,7 +39,8 @@ function Table() {
           <tr style={{background : thPreset.background, border:'none'}}>
           {tableModel.getColumnsNamesList().map((name, index) => (
             <th key={'thtable-'+index} 
-                style={{...thPreset, cursor:'pointer', padding : tableModel.getColumns()[index].sortable ? '10px 36px 10px 18px' : '10px 18px 10px 18px',}} 
+                // different paddings if th must host the arrows
+                style={{...thPreset, cursor:'pointer', padding : tableModel.getColumns()[index].sortable ? '10px 36px 10px 18px' : '10px 18px 10px 18px', textAlign: tableModel.getColumns()[index].thAlignment}} 
                 onClick={() => {handleSortingClick(index)}}>{name}
               {
                 // display arrows if sortable
