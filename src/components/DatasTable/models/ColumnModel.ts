@@ -7,6 +7,7 @@ export class Column {
     #sortable : boolean
     #datatype : 'string' | 'number' | 'date' | 'custom_component' | null
     #customComponent : TCustomComponent | null
+    #thAligment : 'left' | 'center' | 'right'
   
     /**
      * Creates a new Column.
@@ -16,12 +17,20 @@ export class Column {
      * @param {'string' | 'number' | 'date' | 'custom_component' | null} datatype - The data type of the column.
      * @param {TCustomComponent} customComponent - Component populating all cells of the column.
      */
-    constructor(th : string | null, accessor: string | null, sortable : boolean, datatype : 'string' | 'number' | 'date' | 'custom_component' | null, customComponent? : TCustomComponent){
+    constructor(
+      th : string | null, 
+      accessor: string | null, 
+      sortable : boolean, 
+      datatype : 'string' | 'number' | 'date' | 'custom_component' | null, 
+      customComponent? : TCustomComponent,
+      thAlignment? : 'left' | 'center' | 'right')
+    {
       this.#th = th
       this.#accessor = accessor
       this.#sortable = sortable
       this.#datatype = datatype
       this.#customComponent = customComponent || null
+      this.#thAligment = thAlignment || 'left'
     }
     
     /**
@@ -29,7 +38,7 @@ export class Column {
      * @returns {IColumnDefElement | undefined} The column as an object, or undefined if any essential property is null.
      */
     toObject() : IColumnDefElement | undefined {
-      if(this.#customComponent != null) return({th : this.#th, accessor : this.#accessor, sortable : this.#sortable, datatype : this.#datatype, component : this.#customComponent})
+      if(this.#customComponent != null) return({th : this.#th, accessor : this.#accessor, sortable : this.#sortable, datatype : this.#datatype, component : this.#customComponent, thAlignment : this.#thAligment})
       if(this.#th == null || this.#accessor == null || this.#datatype == null ) return undefined // { th: '', datakey: '', sortable: true, datatype: '' }
       return({th : this.#th, accessor : this.#accessor, sortable : this.#sortable, datatype : this.#datatype})
     }

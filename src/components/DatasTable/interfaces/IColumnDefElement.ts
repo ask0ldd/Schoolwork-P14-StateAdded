@@ -1,4 +1,4 @@
-import { ReactNode } from "react"
+import { TCustomComponent } from "../types/TCustomComponent"
 
 export interface IColumnDefElement 
 {
@@ -6,5 +6,6 @@ export interface IColumnDefElement
   accessor : string | null
   sortable : boolean
   datatype : 'string' | 'number' | 'date' | 'custom_component' | null
-  component? : ((index : number) => ReactNode) | null
+  component? : TCustomComponent | null
+  thAlignment? : 'left' | 'center' | 'right'
 }

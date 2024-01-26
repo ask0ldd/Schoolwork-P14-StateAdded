@@ -132,7 +132,7 @@ export class ColumnBuilder {
     build(){
       try{
         // if the column contains customComponents
-        if(this.#customComponent != null && isValidElement(this.#customComponent(1)) && this.#datatype === "custom_component") return new Column(this.#th, this.#accessor, this.#sortable, this.#datatype, this.#customComponent)
+        if(this.#customComponent != null && isValidElement(this.#customComponent(1)) && this.#datatype === "custom_component") return new Column(this.#th, this.#accessor, this.#sortable, this.#datatype, this.#customComponent, this.#thAlignment)
         // if it contains datas : th / accessoir / datatype => mandatory
         if(this.#th == null || this.#accessor == null || this.#datatype == null ) throw new Error("Can't be built : Column definition incomplete.")
         return new Column(this.#th, this.#accessor, this.#sortable, this.#datatype)
