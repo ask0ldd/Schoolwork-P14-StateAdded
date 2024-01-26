@@ -53,10 +53,10 @@ function CurrentEmployees() {
 
 export default CurrentEmployees
 
-function actionsCell(index? : number){ // row index !!! full datas row instead?
+function actionsCell(index? : number, datasRow? : unknown){
   return(
     <td style={{display:'flex', justifyContent:'center', alignItems:'center', padding : '10px 18px 10px 18px',}} key={'tdtable-custom'+index}>
-      <span onClick={() => console.log(index)}>aaaa</span>
+      <span onClick={() => console.log(index + ' : ' + JSON.stringify(datasRow))}>aaaa</span>
     </td>
   )
 }

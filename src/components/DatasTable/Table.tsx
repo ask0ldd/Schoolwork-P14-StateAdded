@@ -63,7 +63,7 @@ function Table() {
               {
                 tableModel.getColumns().map((column, index2) => {
                   // display custom component
-                  if(column.component && isValidElement(column.component(index))) return (column.component(index)) // rowdatas datarow
+                  if(column.component && isValidElement(column.component(index))) return (column.component(index, datarow)) // rowdatas datarow
                   // or display datas
                   const key = column.accessor
                   return(<td key={'tdtable-'+key+'-'+index2+index}>{key && datarow[key as keyof typeof datarow]}</td>)
