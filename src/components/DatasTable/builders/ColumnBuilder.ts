@@ -1,6 +1,8 @@
 import { isValidElement } from "react"
 import { Column } from "../models/ColumnModel"
 import { TCustomComponent } from "../types/TCustomComponent"
+import TAlignment from "../types/TAlignment"
+import TDatatypes from "../types/TDatatypes"
 
 /**
  * Class representing a column builder.
@@ -8,10 +10,10 @@ import { TCustomComponent } from "../types/TCustomComponent"
 export class ColumnBuilder {
 
     #th : string | null = null
-    #thAlignment : "left" | "center" | "right" = "left"
+    #thAlignment : TAlignment = "left"
     #accessor : string | null = null
     #sortable = false
-    #datatype : "string" | "number" | "date" | "custom_component" | null = null
+    #datatype : TDatatypes | null = null
     #customComponent : TCustomComponent | null = null
   
     /**
@@ -31,16 +33,18 @@ export class ColumnBuilder {
     /**
      * Set the text that will be displayed in the th tag of the column.
      * @param {string} th - The text for the th tag.
+     * @param {TAlignment} alignment th text alignment ("left" | "center" | "right")
      * @returns {ColumnBuilder} - The column builder instance.
      */
-    setColumnName(th : string){
+    setColumnName(th : string, alignment? : TAlignment){
+      if(alignment) this.#setColumnNameTextAlignment(alignment)
       this.#th = th
       return this
     }
 
-    setColumnNameTextAlignment(alignment : 'left' | 'center' | 'right'){
+    #setColumnNameTextAlignment(alignment : TAlignment){
       this.#thAlignment = alignment
-      return this
+      // return this
     }
   
     /**
@@ -66,10 +70,10 @@ export class ColumnBuilder {
   
     /**
      * Set the type of data that will fill the column.
-     * @param {"string" | "number" | "date"} datatype - The type of data for the column.
+     * @param {TDatatypes} datatype - The type of data for the column.
      * @returns {ColumnBuilder} - The column builder instance.
      */
-    setDatatype(datatype : "string" | "number" | "date" | "custom_component"){
+    setDatatype(datatype : TDatatypes){
       if(this.#datatype === "custom_component") return this
       this.#datatype = datatype
       return this
