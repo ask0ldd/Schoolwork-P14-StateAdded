@@ -10,7 +10,7 @@ import TDatatypes from "../types/TDatatypes"
 export class ColumnBuilder {
 
     #th : string | null = null
-    #thAlignment : TAlignment = "left"
+    #thAlignment : TAlignment | 'preset' = "preset"
     #accessor : string | null = null
     #sortable = false
     #datatype : TDatatypes | null = null
@@ -22,7 +22,7 @@ export class ColumnBuilder {
      */
     constructor(){
       this.#th = null
-      this.#thAlignment = 'left'
+      this.#thAlignment = 'preset'
       this.#accessor = null
       this.#sortable = false
       this.#datatype = null
@@ -36,8 +36,8 @@ export class ColumnBuilder {
      * @param {TAlignment} alignment th text alignment ("left" | "center" | "right")
      * @returns {ColumnBuilder} - The column builder instance.
      */
-    setColumnName(th : string, alignment? : TAlignment){
-      if(alignment) this.#setColumnNameTextAlignment(alignment)
+    setColumnName(th : string, alignment? : 'align-left' | 'align-center' | 'align-right'){
+      if(alignment && ['align-left', 'align-center', 'align-right'].includes(alignment)) this.#setColumnNameTextAlignment(alignment.split('-')[1] as TAlignment)
       this.#th = th
       return this
     }

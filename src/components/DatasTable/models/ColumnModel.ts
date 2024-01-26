@@ -9,7 +9,7 @@ export class Column {
     #sortable : boolean
     #datatype : TDatatypes | null
     #customComponent : TCustomComponent | null
-    #thAligment : TAlignment
+    #thAligment : TAlignment | 'preset'
   
     /**
      * Creates a new Column.
@@ -26,14 +26,14 @@ export class Column {
       sortable : boolean, 
       datatype : TDatatypes | null, 
       customComponent? : TCustomComponent | null,
-      thAlignment? : TAlignment)
+      thAlignment? : TAlignment | 'preset')
     {
       this.#th = th
       this.#accessor = accessor
       this.#sortable = sortable
       this.#datatype = datatype
       this.#customComponent = customComponent || null
-      this.#thAligment = thAlignment || 'left'
+      this.#thAligment = thAlignment || 'preset'
     }
     
     /**
