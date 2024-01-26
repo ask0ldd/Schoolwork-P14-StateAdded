@@ -1,5 +1,6 @@
-import { ReactNode, isValidElement } from "react"
+import { isValidElement } from "react"
 import { Column } from "../models/ColumnModel"
+import { TCustomComponent } from "../types/TCustomComponent"
 
 /**
  * Class representing a column builder.
@@ -11,7 +12,7 @@ export class ColumnBuilder {
     #accessor : string | null = null
     #sortable = false
     #datatype : "string" | "number" | "date" | "custom_component" | null = null
-    #customComponent : ((index : number) => ReactNode) | null = null
+    #customComponent : TCustomComponent | null = null
   
     /**
      * Start building a new column.
@@ -115,7 +116,8 @@ export class ColumnBuilder {
      * The column will contain a Custom Component.
      * @returns {ColumnBuilder}
      */
-    setCustomComponent(customComponent : (index : number) => ReactNode){
+    setCustomComponent(customComponent : TCustomComponent){
+      if(customComponent == null || !isValidElement(customComponent())) throw new Error("Invalid Component.")
       this.#datatype = "custom_component"
       this.#accessor = null
       this.#customComponent = customComponent

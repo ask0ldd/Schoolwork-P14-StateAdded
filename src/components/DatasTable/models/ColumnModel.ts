@@ -1,12 +1,12 @@
-import { ReactNode } from "react"
 import { IColumnDefElement } from "../interfaces/IColumnDefElement"
+import { TCustomComponent } from "../types/TCustomComponent"
 
 export class Column {
     #th : string | null
     #accessor : string | null
     #sortable : boolean
     #datatype : 'string' | 'number' | 'date' | 'custom_component' | null
-    #customComponent : ((index : number) => ReactNode) | null
+    #customComponent : TCustomComponent | null
   
     /**
      * Creates a new Column.
@@ -14,9 +14,9 @@ export class Column {
      * @param {string} accessor - The accessor for the column.
      * @param {boolean} sortable - Indicates if the column is sortable.
      * @param {'string' | 'number' | 'date' | 'custom_component' | null} datatype - The data type of the column.
-     * @param {(index : number) => ReactNode} customComponent - Component populating all cells of the column.
+     * @param {TCustomComponent} customComponent - Component populating all cells of the column.
      */
-    constructor(th : string | null, accessor: string | null, sortable : boolean, datatype : 'string' | 'number' | 'date' | 'custom_component' | null, customComponent? : (index : number) => ReactNode){
+    constructor(th : string | null, accessor: string | null, sortable : boolean, datatype : 'string' | 'number' | 'date' | 'custom_component' | null, customComponent? : TCustomComponent){
       this.#th = th
       this.#accessor = accessor
       this.#sortable = sortable
