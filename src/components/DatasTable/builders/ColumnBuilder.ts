@@ -7,10 +7,11 @@ import { Column } from "../models/ColumnModel"
 export class ColumnBuilder {
 
     #th : string | null = null
+    #thAlignment : "left" | "center" | "right" = "left"
     #accessor : string | null = null
     #sortable = false
     #datatype : "string" | "number" | "date" | "custom_component" | null = null
-    #customComponent : (() => ReactNode) | null = null
+    #customComponent : ((index : number) => ReactNode) | null = null
   
     /**
      * Start building a new column.
@@ -18,6 +19,7 @@ export class ColumnBuilder {
      */
     constructor(){
       this.#th = null
+      this.#thAlignment = 'left'
       this.#accessor = null
       this.#sortable = false
       this.#datatype = null
@@ -34,6 +36,13 @@ export class ColumnBuilder {
       this.#th = th
       return this
     }
+
+    /*
+    setColumnNameAlignment(alignment : 'left' | 'center' | 'right'){
+      this.#thAlignment = alignment
+      return this
+    }
+    */
   
     /**
      * Set the key from the data object pointing to the value used to fill the column.
@@ -106,7 +115,7 @@ export class ColumnBuilder {
      * The column will contain a Custom Component.
      * @returns {ColumnBuilder}
      */
-    setCustomComponent(customComponent : () => ReactNode){
+    setCustomComponent(customComponent : (index : number) => ReactNode){
       this.#datatype = "custom_component"
       this.#accessor = null
       this.#customComponent = customComponent
@@ -120,9 +129,9 @@ export class ColumnBuilder {
      */
     build(){
       try{
-        // if #customComponent is a valid ReactNode
-        if(this.#customComponent != null && isValidElement(this.#customComponent()) && this.#datatype === "custom_component") return new Column(this.#th, this.#accessor, this.#sortable, this.#datatype, this.#customComponent)
-        // if not th / accessoir / datatype are mandatory
+        // if the column contains customComponents
+        if(this.#customComponent != null && isValidElement(this.#customComponent(1)) && this.#datatype === "custom_component") return new Column(this.#th, this.#accessor, this.#sortable, this.#datatype, this.#customComponent)
+        // if it contains datas : th / accessoir / datatype => mandatory
         if(this.#th == null || this.#accessor == null || this.#datatype == null ) throw new Error("Can't be built : Column definition incomplete.")
         return new Column(this.#th, this.#accessor, this.#sortable, this.#datatype)
       }catch (e){

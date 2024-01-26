@@ -6,7 +6,7 @@ export class Column {
     #accessor : string | null
     #sortable : boolean
     #datatype : 'string' | 'number' | 'date' | 'custom_component' | null
-    #customComponent : (() => ReactNode) | null
+    #customComponent : ((index : number) => ReactNode) | null
   
     /**
      * Creates a new Column.
@@ -14,9 +14,9 @@ export class Column {
      * @param {string} accessor - The accessor for the column.
      * @param {boolean} sortable - Indicates if the column is sortable.
      * @param {'string' | 'number' | 'date' | 'custom_component' | null} datatype - The data type of the column.
-     * @param {() => ReactNode} customComponent - Component populating all cells of the column.
+     * @param {(index : number) => ReactNode} customComponent - Component populating all cells of the column.
      */
-    constructor(th : string | null, accessor: string | null, sortable : boolean, datatype : 'string' | 'number' | 'date' | 'custom_component' | null, customComponent? : () => ReactNode){
+    constructor(th : string | null, accessor: string | null, sortable : boolean, datatype : 'string' | 'number' | 'date' | 'custom_component' | null, customComponent? : (index : number) => ReactNode){
       this.#th = th
       this.#accessor = accessor
       this.#sortable = sortable

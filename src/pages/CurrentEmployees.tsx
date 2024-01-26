@@ -24,6 +24,7 @@ function CurrentEmployees() {
   const employeesList  = useTypedSelector((state) => state.employees.employees)
 
   const tableModel = new TableModel({id : "current_employees"})
+
   tableModel.addColumn(new ColumnBuilder().setColumnName("First Name").setDatatypeAsString().setAccessor("firstName").setSortability(true).build())
   tableModel.addColumn(new ColumnBuilder().setColumnName("Last Name").setDatatypeAsString().setAccessor("lastName").setSortability(true).build())
   tableModel.addColumn(new ColumnBuilder().setColumnName("Start Date").setDatatypeAsDate().setAccessor("startingDate").setSortability(true).build())
@@ -33,9 +34,9 @@ function CurrentEmployees() {
   tableModel.addColumn(new ColumnBuilder().setColumnName("City").setDatatypeAsString().setAccessor("city").setSortability(true).build())
   tableModel.addColumn(new ColumnBuilder().setColumnName("State").setDatatypeAsString().setAccessor("state").setSortability(true).build())
   tableModel.addColumn(new ColumnBuilder().setColumnName("Zip Code").setDatatypeAsNumber().setAccessor("zipCode").setSortability(true).build())
-  tableModel.addColumn(new ColumnBuilder().setColumnName("Test").setCustomComponent(customComp).build())
-  console.log(tableModel.getAccessorsList())
-  console.log(tableModel.getColumnsNamesList())
+  tableModel.addColumn(new ColumnBuilder().setColumnName("Actions").setCustomComponent(actionsCell).build())
+  /*console.log(tableModel.getAccessorsList())
+  console.log(tableModel.getColumnsNamesList())*/
 
   return (
     <>
@@ -54,10 +55,10 @@ function CurrentEmployees() {
 
 export default CurrentEmployees
 
-function customComp(){
+function actionsCell(index : number){ // row index !!! full datas row instead?
   return(
-  <>
-    aaaa
-  </>
+    <td style={{display:'flex', justifyContent:'center', alignItems:'center', padding : '10px 18px 10px 18px',}} key={'tdtable-custom'+index}>
+      <span onClick={() => console.log(index)}>aaaa</span>
+    </td>
   )
 }

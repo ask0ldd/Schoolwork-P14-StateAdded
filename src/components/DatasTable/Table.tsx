@@ -37,28 +37,37 @@ function Table() {
       <table style={preset.global ? {background: preset.global.backgroundColor, fontFamily : preset.global.font, color : preset.global.textColor} : {}} id={tableModel.getTableId()} aria-label="Current Employees">
         <thead style={topSeparatorColor}>
           <tr style={{background : thPreset.background, border:'none'}}>
-          {[...tableModel.getColumnsNamesList()].map((name, index) => (
-            <th key={'thtable-'+index} style={{...thPreset, cursor:'pointer'}} onClick={() => {handleSortingClick(index)}}>{name}
-              <div className="arrowsContainer">
-                {tableModel.getColumns()[index].sortable && 
-                  <span style={tableState.sorting?.direction === "asc" && tableState.sorting?.column == tableAccessors[index] ? arrowActiveColor : arrowInactiveColor}>▲</span>}
-                {tableModel.getColumns()[index].sortable && 
-                  <span style={tableState.sorting?.direction === "desc" && tableState.sorting?.column == tableAccessors[index] ? arrowActiveColor : arrowInactiveColor}>▼</span>}
-              </div>
+          {tableModel.getColumnsNamesList().map((name, index) => (
+            <th key={'thtable-'+index} 
+                style={{...thPreset, cursor:'pointer', padding : tableModel.getColumns()[index].sortable ? '10px 36px 10px 18px' : '10px 18px 10px 18px',}} 
+                onClick={() => {handleSortingClick(index)}}>{name}
+              {
+                // display arrows if sortable
+                tableModel.getColumns()[index].sortable && 
+                  <div className="arrowsContainer">
+                    <span style={tableState.sorting?.direction === "asc" && tableState.sorting?.column == tableAccessors[index] ? arrowActiveColor : arrowInactiveColor}>▲</span>
+                    <span style={tableState.sorting?.direction === "desc" && tableState.sorting?.column == tableAccessors[index] ? arrowActiveColor : arrowInactiveColor}>▼</span>
+                  </div>
+              }
             </th>))}
           </tr>
         </thead>
         <tbody style={topSeparatorColor}>
-          {[...rowsToDisplay].map((datarow, index) => (
+          {rowsToDisplay.map((datarow, index) => (
             <tr onMouseOut={() => setHoverTR(-1)} onMouseEnter={() => setHoverTR(index)}
                 style={ hoverTR === index ? hoverRowStyle
                 : {...isRowOdd(index) ? oddRowPreset : evenRowPreset, 
                 borderBottom : isLastRow(index, rowsToDisplay.length-1) ? 'none' : (isRowOdd(index) ? oddRowPreset.borderBottom : evenRowPreset.borderBottom)}} 
                 key={'trtable-'+index} className={isRowOdd(index) + isLastRow(index, rowsToDisplay.length-1)}>
-              {[...tableAccessors].map((key : string | null) => (
-                <td key={'tdtable-'+key+'-'+index}>{key && datarow[key as keyof typeof datarow]}</td>
-                // should display custom components
-              ))}
+              {
+                tableModel.getColumns().map((column, index2) => {
+                  // display custom component
+                  if(column.component) return (column.component(index)) // rowdatas datarow
+                  // or display datas
+                  const key = column.accessor
+                  return(<td key={'tdtable-'+key+'-'+index2+index}>{key && datarow[key as keyof typeof datarow]}</td>)
+                })
+              }
             </tr>
           ))}
         </tbody>
