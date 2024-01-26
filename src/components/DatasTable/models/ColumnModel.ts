@@ -18,7 +18,7 @@ export class Column {
      * @param {boolean} sortable - Indicates if the column is sortable.
      * @param {TDatatypes | null} datatype - The data type of the column.
      * @param {TCustomComponent} customComponent - Component populating all cells of the column.
-     * @param {TAlignment} thAlignment - Horizontal Alignment for the TH text of the column.
+     * @param {TAlignment | 'preset'} thAlignment - Horizontal Alignment for the TH text of the column.
      */
     constructor(
       th : string | null, 

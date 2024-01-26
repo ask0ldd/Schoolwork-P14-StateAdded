@@ -30,7 +30,7 @@ function CurrentEmployees() {
   tableModel.addColumn(new ColumnBuilder().setColumnName("Start Date").setDatatypeAsDate().setAccessor("startingDate").setSortability(true).build())
   tableModel.addColumn(new ColumnBuilder().setColumnName("Department").setDatatypeAsString().setAccessor("department").setSortability(true).build())
   tableModel.addColumn(new ColumnBuilder().setColumnName("Birthdate").setDatatypeAsDate().setAccessor("birthDate").setSortability(true).build())
-  tableModel.addColumn(new ColumnBuilder().setColumnName("Street", "align-center").setDatatypeAsString().setAccessor("street").setSortability(true).build())
+  tableModel.addColumn(new ColumnBuilder().setColumnName("Street").setDatatypeAsString().setAccessor("street").setSortability(true).build())
   tableModel.addColumn(new ColumnBuilder().setColumnName("City").setDatatypeAsString().setAccessor("city").setSortability(true).build())
   tableModel.addColumn(new ColumnBuilder().setColumnName("State").setDatatypeAsString().setAccessor("state").setSortability(true).build())
   tableModel.addColumn(new ColumnBuilder().setColumnName("Zip Code").setDatatypeAsNumber().setAccessor("zipCode").setSortability(true).build())

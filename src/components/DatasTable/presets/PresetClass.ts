@@ -71,6 +71,7 @@ class PresetClass {
     * Set the Header Style
     * @param {Object} options - The style options.
     * @param {string} options.textColor - The text color.
+    * @param {string} options.textAlign - The text alignment.
     * @param {string} options.background - The background color.
     * @param {string} options.arrowColor - The arrow color.
     * @param {string} options.activeArrowColor - The active arrow color.
