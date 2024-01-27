@@ -35,16 +35,20 @@ function CurrentEmployees() {
   tableModel.addColumn(new ColumnBuilder().setColumnName("Zip Code").setDatatypeAsNumber().setAccessor("zipCode").setSortability(true).build())
   tableModel.addColumn(new ColumnBuilder().setColumnName("Actions", "align-center").setCustomComponent(actionsCell).build())
 
-  // !!! add a way to choose the default number of rows per page
   return (
     <>
       <Header pageTitle='Current Employees'/>
       <main className='mainCE'>
-        <DatasTable tableModel={tableModel} tableDatas={employeesList} preset={
+        <DatasTable 
+          tableModel={tableModel} tableDatas={employeesList} preset={
           basePreset/*.setHoveredElementsStyle({textColor: "#FFFFFF", background:'#FF0000'})
           .setOddRowsStyle({background:'#dddddd', separatorColor: '#aaaaaa', textColor : "blue"})*/
-          .get()
-        } nRowsDefault={25}/>
+          .get()} 
+          nRowsDefault={25}
+          hidePagination={true}
+          hideSearchBar={true}
+          hideNRowsSelect={true}
+        />
       </main>
       <Footer/>
     </>
