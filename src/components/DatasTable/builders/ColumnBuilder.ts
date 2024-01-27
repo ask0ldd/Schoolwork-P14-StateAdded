@@ -109,6 +109,10 @@ export class ColumnBuilder {
       return this
     }
 
+    /**
+     * Set the data type of the column as a Custom Component.
+     * @returns {ColumnBuilder}
+     */
     setDatatypeAsCustomComponent(){
       this.#datatype = "custom_component"
       return this

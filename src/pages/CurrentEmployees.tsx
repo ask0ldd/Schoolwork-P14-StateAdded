@@ -12,7 +12,6 @@ import { darkGreenPreset } from '../components/DatasTable/presets/darkGreenPrese
 import { basePreset } from '../components/DatasTable/presets/basePreset'
 import { darkPurplePreset } from '../components/DatasTable/presets/darkPurplePreset'
 import { lightPurplePreset } from '../components/DatasTable/presets/lightPurplePreset'
-import { IPreset } from '../components/DatasTable/interfaces/IPreset'
 
 /**
  * Component : Displaying the current employees datatable page.
@@ -36,6 +35,7 @@ function CurrentEmployees() {
   tableModel.addColumn(new ColumnBuilder().setColumnName("Zip Code").setDatatypeAsNumber().setAccessor("zipCode").setSortability(true).build())
   tableModel.addColumn(new ColumnBuilder().setColumnName("Actions", "align-center").setCustomComponent(actionsCell).build())
 
+  // !!! add a way to choose the default number of rows per page
   return (
     <>
       <Header pageTitle='Current Employees'/>
@@ -57,7 +57,7 @@ function actionsCell(index? : number, datasRow? : unknown){
   const tdStyle = {display:'flex', justifyContent:'center', alignItems:'center', padding : '10px 18px 10px 18px',}
   return(
     <td style={tdStyle} key={'tdtable-custom'+index}>
-      <span onClick={() => console.log(index + ' : ' + JSON.stringify(datasRow))}>aaaa</span>
+      <span role="button" onClick={() => console.log({rowId : index, datas : JSON.stringify(datasRow)})}>aaaa</span>
     </td>
   )
 }

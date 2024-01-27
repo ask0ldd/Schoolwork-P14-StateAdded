@@ -38,11 +38,23 @@ export class Column {
     
     /**
      * Converts the Column to an object.
-     * @returns {IColumnDefElement | undefined} The column as an object, or undefined if any essential property is null.
+     * @returns {IColumnDefElement} The column as an object, or undefined if any essential property is null.
      */
-    toObject() : IColumnDefElement | undefined {
-      if(this.#customComponent != null) return({th : this.#th, accessor : this.#accessor, sortable : this.#sortable, datatype : this.#datatype, component : this.#customComponent, thAlignment : this.#thAligment})
-      if(this.#th == null || this.#accessor == null || this.#datatype == null ) return undefined // { th: '', datakey: '', sortable: true, datatype: '' }
-      return({th : this.#th, accessor : this.#accessor, sortable : this.#sortable, datatype : this.#datatype, thAlignment : this.#thAligment})
+    toObject() : IColumnDefElement {
+      if(this.#customComponent != null) return({
+        th : this.#th, accessor : this.#accessor, 
+        sortable : this.#sortable, 
+        datatype : this.#datatype, 
+        component : this.#customComponent, 
+        thAlignment : this.#thAligment
+      })
+      if(this.#th == null || this.#accessor == null || this.#datatype == null ) throw new Error('Column Definition Incomplete.')
+      return({
+        th : this.#th, 
+        accessor : this.#accessor, 
+        sortable : this.#sortable, 
+        datatype : this.#datatype, 
+        thAlignment : this.#thAligment
+      })
     }
   }
