@@ -26,7 +26,7 @@ import { basePreset } from './presets/basePreset'
  * @param {Object[]} props.tableDatas - Datas used to populate the table.
  * @return ( <DatasTable tableModel={tableModel} tableDatas={tableDatas}/> )
  */
-function DatasTable({tableModel, tableDatas, preset} : IProps){
+function DatasTable({tableModel, tableDatas, preset, nRowsDefault} : IProps){
 
     // [perfs] tableModel & tableDatas props already triggering a re-render (being props), so no need of useState
     const isColumnsDefinitionMatchingDatas = useMemo(() => {
@@ -53,7 +53,7 @@ function DatasTable({tableModel, tableDatas, preset} : IProps){
                 // providing model, datas & dispatch fn to the children components
                 <DatasTableContext.Provider value={{tableModel, dispatch, tableState, preset : preset || basePreset.get()}}>
                     <div style={preset?.global ? {fontFamily : preset.global.font, color : preset.global.textColor} : {}} id="entriesNSearchContainer">
-                        <NDisplayedSelect/>                        
+                        <NDisplayedSelect nRowsDefault={nRowsDefault}/>                        
                         <SearchModule/>
                     </div>
                     <Table/>
@@ -75,4 +75,5 @@ interface IProps {
     tableModel : TableModel
     tableDatas : Array<any>
     preset? : IPreset
+    nRowsDefault? : number
 }

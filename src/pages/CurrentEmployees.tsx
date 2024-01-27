@@ -44,7 +44,7 @@ function CurrentEmployees() {
           basePreset/*.setHoveredElementsStyle({textColor: "#FFFFFF", background:'#FF0000'})
           .setOddRowsStyle({background:'#dddddd', separatorColor: '#aaaaaa', textColor : "blue"})*/
           .get()
-        }/>
+        } nRowsDefault={25}/>
       </main>
       <Footer/>
     </>
