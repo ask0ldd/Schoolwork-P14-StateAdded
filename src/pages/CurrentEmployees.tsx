@@ -45,9 +45,9 @@ function CurrentEmployees() {
           .setOddRowsStyle({background:'#dddddd', separatorColor: '#aaaaaa', textColor : "blue"})*/
           .get()} 
           nRowsDefault={25}
-          hidePagination={true}
+          /*hidePagination={true}
           hideSearchBar={true}
-          hideNRowsSelect={true}
+          hideNRowsSelect={true}*/
         />
       </main>
       <Footer/>
