@@ -5,6 +5,7 @@ import OptionsList from "./OptionsList"
 import {useState, useRef, useEffect} from 'react'
 import { useKeyboardHandler } from './hooks/useKeyboardHandler'
 import { SelectContext } from './contexts/SelectContext'
+import { ISelectPreset } from './presets/ISelectPreset'
 // import { DatasTableContext } from '../DatasTableContext'
 
 /**
@@ -18,7 +19,7 @@ import { SelectContext } from './contexts/SelectContext'
  * @param {function} props.onValueChange - Function triggered when selecting a new option.
  * @return ( <CustomSelect formGroupState={formGroupState} options={options} selectId={selectId} labelledBy={labelledBy} onValueChange={onValueChange}/> )
  */
-function Select({ options, selectId, defaultOption, _onOptionChangeCallback } : IProps){ // should be able to pass the id of the element labelling the select
+function Select({ options, selectId, defaultOption, _onOptionChangeCallback, preset } : IProps){ // should be able to pass the id of the element labelling the select
 
     // const options = options // || [ {label : '10', value : '10'}, {label : '25', value : '25'}, {label : '50', value : '50'}, {label : '100', value : '100'}]
 
@@ -59,6 +60,7 @@ function Select({ options, selectId, defaultOption, _onOptionChangeCallback } : 
             <SelectContext.Provider value={{
                 selectId, options, activeOption : {get :  () => activeOptionRef.current, set : setActiveOption}, 
                 listbox : { isExpanded : isListboxExpanded, setAsExpanded : setListboxAsExpanded},
+                preset : preset
             }}>
                 <SelectComboBox/>
                 <OptionsList/>
@@ -80,4 +82,5 @@ interface IProps{
     selectId : string
     defaultOption ?: number
     _onOptionChangeCallback ?: (activeOption : IOption) => unknown
+    preset ?: ISelectPreset
 }
