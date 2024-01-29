@@ -10,14 +10,14 @@ import { SelectContext } from './contexts/SelectContext'
  */
 function OptionsList(){
 
-    const { selectId, options, listbox, preset } = useContext(SelectContext)
+    const { id, options, listbox, preset } = useContext(SelectContext)
     
     const optionsContainerStyle = {background : preset.optionsContainerBackgroundColor, border : '1px solid ' + preset.optionsContainerBorderColor}
 
     return(
         listbox.isExpanded ? 
         <ul style={optionsContainerStyle} onClick={(e) => {e.preventDefault(); console.log('listbox');}} tabIndex={-1} id="customListbox" aria-labelledby="customSelectLabel" className="selectOptionsContainer" role="listbox">
-            {options.map((option, index) => <Option key={selectId+'-option-'+index} index={index} option={option}/>)}
+            {options.map((option, index) => <Option key={id+'-option-'+index} index={index} option={option}/>)}
         </ul> 
         : <></>
     )

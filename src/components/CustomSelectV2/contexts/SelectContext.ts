@@ -4,7 +4,9 @@ import { ISelectPreset } from "../presets/ISelectPreset";
 import { basePreset } from "../presets/basePreset";
 
 export const SelectContext = createContext<ISelectContext>({
-    selectId : '',
+    id : '',
+    name : '',
+    labelledBy : '',
     options : [],  
     activeOption : {get : () => ({label:'', value:''}), set : () => false},
     listbox : {isExpanded : false, setAsExpanded : () => false},
@@ -12,7 +14,9 @@ export const SelectContext = createContext<ISelectContext>({
 })
 
 interface ISelectContext{
-    selectId : string
+    id : string
+    name : string
+    labelledBy : string
     options : Array<IOption>
     activeOption : {
         get : () => IOption

@@ -20,7 +20,7 @@ import { basePreset } from './presets/basePreset'
  * @param {function} props.onValueChange - Function triggered when selecting a new option.
  * @return ( <CustomSelect formGroupState={formGroupState} options={options} selectId={selectId} labelledBy={labelledBy} onValueChange={onValueChange}/> )
  */
-function Select({ options, selectId, defaultOption, _onOptionChangeCallback, preset } : IProps){ // should be able to pass the id of the element labelling the select
+function Select({ options, id, labelledBy, defaultOption, _onOptionChangeCallback, preset } : IProps){ // should be able to pass the id of the element labelling the select
 
     // const options = options // || [ {label : '10', value : '10'}, {label : '25', value : '25'}, {label : '50', value : '50'}, {label : '100', value : '100'}]
 
@@ -48,7 +48,7 @@ function Select({ options, selectId, defaultOption, _onOptionChangeCallback, pre
     }
 
     useKeyboardHandler(
-        selectId,
+        id,
         [...options], 
         activeOptionRef, 
         isListboxExpandedRef, 
@@ -59,7 +59,7 @@ function Select({ options, selectId, defaultOption, _onOptionChangeCallback, pre
     return(
         <div className="selectContainer">
             <SelectContext.Provider value={{
-                selectId, options, activeOption : {get :  () => activeOptionRef.current, set : setActiveOption}, 
+                id, labelledBy : labelledBy || '', options, activeOption : {get :  () => activeOptionRef.current, set : setActiveOption}, 
                 listbox : { isExpanded : isListboxExpanded, setAsExpanded : setListboxAsExpanded},
                 preset : preset || basePreset.get()
             }}>
@@ -80,7 +80,8 @@ export interface IOption{
 
 interface IProps{
     options : Array<IOption>
-    selectId : string
+    id : string
+    labelledBy ?: string
     defaultOption ?: number
     _onOptionChangeCallback ?: (activeOption : IOption) => unknown
     preset ?: ISelectPreset

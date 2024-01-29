@@ -12,7 +12,7 @@ function SelectComboBox(){
 
     const [comboboxFocus, setComboboxFocus] = useState(false)
 
-    const { selectId, activeOption, listbox, preset } = useContext(SelectContext)
+    const { id, labelledBy, activeOption, listbox, preset } = useContext(SelectContext)
 
     const comboboxStyle = {
         background: preset.selectBackgroundColor , 
@@ -30,8 +30,8 @@ function SelectComboBox(){
         <span style={comboboxFocus ? comboboxFocusStyle : comboboxStyle} 
             onFocus={()=> setComboboxFocus(true)} onBlur={() => {listbox.setAsExpanded(false); setComboboxFocus(false)}} 
             onMouseDown={() => {listbox.setAsExpanded(!listbox.isExpanded)}} 
-            tabIndex={0} aria-controls="customListbox" id={selectId + "SelectLabel"} role="combobox" 
-            aria-haspopup="listbox" aria-activedescendant={activeOption.get().value}
+            tabIndex={0} aria-controls="customListbox" id={id} role="combobox" 
+            aria-haspopup="listbox" aria-activedescendant={activeOption.get().value} aria-labelledby={labelledBy}
             aria-expanded={listbox.isExpanded} className={listbox.isExpanded ? "selectLabel selectLabel-active" : "selectLabel"}
         >
             {activeOption.get().label}
