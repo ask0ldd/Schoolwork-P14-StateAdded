@@ -16,13 +16,13 @@
   width: 100%;
 }*/
 
-#entriesNSearchContainer {
+/*#entriesNSearchContainer {
   margin-bottom: 0.5rem;
 }
 
 #infosNPaginationContainer {
   margin-top: 0.25rem;
-}
+}*/
 
 .mainCE input[type="text"] {
   border: 1px solid #c5c5c5;
@@ -33,7 +33,7 @@
   font-size: 1em;
 }
 
-#infosContainer {
+/*#infosContainer {
   display: flex;
   align-items: center;
-}
+}*/

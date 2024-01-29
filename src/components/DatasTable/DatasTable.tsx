@@ -27,7 +27,7 @@ import { basePreset } from './presets/basePreset'
  * @param {number} props.nRowsDefault - Number of rows displayed by default
  * @return ( <DatasTable tableModel={tableModel} tableDatas={tableDatas}/> )
  */
-function DatasTable({tableModel, tableDatas, preset, nRowsDefault, hideNRowsSelect, hideSearchBar, hidePagination} : IProps){
+export function DatasTable({tableModel, tableDatas, preset, nRowsDefault, hideNRowsSelect, hideSearchBar, hidePagination} : IProps){
 
     // [perfs] tableModel & tableDatas props already triggering a re-render (being props), so no need of useState
     const isColumnsDefinitionMatchingDatas = useMemo(() => {
@@ -48,10 +48,16 @@ function DatasTable({tableModel, tableDatas, preset, nRowsDefault, hideNRowsSele
 
     const {tableState, dispatch} = useTableManager(tableModel, [...tableDatas])
 
-    
+    const entriesNSearchContainerBaseStyle = {
+        display: 'flex', justifyContent: 'space-between', width: '100%', marginBottom: '0.35rem'
+    }
+
+    const infosNPaginationContainerBaseStyle = {
+        display: 'flex', justifyContent: 'space-between', width: '100%', marginTop: '0.25rem'
+    }
 
     return(
-        <>
+        <div style={{display:'flex', flexDirection:'column', width:'100%'}}>
             {preset?.global.font === "'Jost', sans-serif" ?
                 <style>
                     @import url("https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600;700;800&display=swap");
@@ -73,19 +79,19 @@ function DatasTable({tableModel, tableDatas, preset, nRowsDefault, hideNRowsSele
             { isColumnsDefinitionMatchingDatas ? 
                 // providing model, datas & dispatch fn to the children components
                 <DatasTableContext.Provider value={{tableModel, dispatch, tableState, preset : preset || basePreset.get()}}>
-                    {(!hideNRowsSelect || !hideSearchBar) && <div style={preset?.global ? {fontFamily : preset.global.font, color : preset.global.textColor, display: 'flex', justifyContent: 'space-between', width: '100%'} : {display: 'flex', justifyContent: 'space-between', width: '100%'}} id="entriesNSearchContainer">
+                    {(!hideNRowsSelect || !hideSearchBar) && <div style={preset?.global ? {fontFamily : preset.global.font, color : preset.global.textColor, ...entriesNSearchContainerBaseStyle} : entriesNSearchContainerBaseStyle} id="entriesNSearchContainer">
                         {!hideNRowsSelect && <NDisplayedSelect nRowsDefault={nRowsDefault}/>}
                         {!hideSearchBar && <SearchModule/>}
                     </div>}
                     <Table/>
-                    {!hidePagination && <div style={preset?.global ? {fontFamily : preset.global.font, color : preset.global.textColor, display: 'flex', justifyContent: 'space-between', width: '100%'} : {display: 'flex', justifyContent: 'space-between', width: '100%'}} id="infosNPaginationContainer">
+                    {!hidePagination && <div style={preset?.global ? {fontFamily : preset.global.font, color : preset.global.textColor, ...infosNPaginationContainerBaseStyle} : infosNPaginationContainerBaseStyle} id="infosNPaginationContainer">
                         <NEntries/>
                         <Pagination/>
                     </div>}
                 </DatasTableContext.Provider> 
                 : <div>Users datas are missing some mandatory dataKeys.</div>
             }
-        </>
+        </div>
     )
 
 }

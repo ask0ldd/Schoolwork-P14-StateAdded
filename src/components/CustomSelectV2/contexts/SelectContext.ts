@@ -5,7 +5,6 @@ import { basePreset } from "../presets/basePreset";
 
 export const SelectContext = createContext<ISelectContext>({
     id : '',
-    name : '',
     labelledBy : '',
     options : [],  
     activeOption : {get : () => ({label:'', value:''}), set : () => false},
@@ -15,7 +14,6 @@ export const SelectContext = createContext<ISelectContext>({
 
 interface ISelectContext{
     id : string
-    name : string
     labelledBy : string
     options : Array<IOption>
     activeOption : {
