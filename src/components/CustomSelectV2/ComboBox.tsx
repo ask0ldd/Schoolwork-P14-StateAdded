@@ -8,7 +8,7 @@ import { SelectContext } from './contexts/SelectContext'
  * @Component
  * @return ( <SelectComboBox/> )
  */
-function SelectComboBox(){
+function ComboBox(){
 
     const [comboboxFocus, setComboboxFocus] = useState(false)
 
@@ -43,4 +43,4 @@ function SelectComboBox(){
     )
 }
 
-export default SelectComboBox
+export default ComboBox

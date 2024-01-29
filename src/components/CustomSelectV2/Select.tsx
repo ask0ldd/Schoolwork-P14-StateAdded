@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import './style/Select.css'
-import SelectComboBox from "./ComboBox"
+import ComboBox from "./ComboBox"
 import OptionsList from "./OptionsList"
 import {useState, useRef, useEffect} from 'react'
 import { useKeyboardHandler } from './hooks/useKeyboardHandler'
@@ -16,28 +16,30 @@ import { basePreset } from './presets/basePreset'
  * @param {Object} props.options
  * @param {string} props.options[].label - Text displayed as an option.
  * @param {string} props.options[].value - Value sent on form submit when this option is selected.
- * @param {string} props.selectId - Id of the select, only used for options naming purposes.
+ * @param {string} props.id - Id of the select, only used for options naming purposes.
+ * @param {string} props.labelledBy - id of the label associated with this select.
  * @param {function} props.onValueChange - Function triggered when selecting a new option.
- * @return ( <CustomSelect formGroupState={formGroupState} options={options} selectId={selectId} labelledBy={labelledBy} onValueChange={onValueChange}/> )
+ * @return ( <Select formGroupState={formGroupState} options={options} selectId={selectId} labelledBy={labelledBy} onValueChange={onValueChange}/> )
  */
 function Select({ options, id, labelledBy, defaultOption, onValueChange, preset } : IProps){ // should be able to pass the id of the element labelling the select
 
-    // const options = options // || [ {label : '10', value : '10'}, {label : '25', value : '25'}, {label : '50', value : '50'}, {label : '100', value : '100'}]
+    // !!! should verify no duplicates in options
 
-    // const {dispatch} = useContext(DatasTableContext)
-
-    const activeOptionRef = useRef<IOption>({...options[0]})
+    const activeOptionRef = useRef<IOption>({...options[0]}) // should be default options
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const [_activeOption, _setActiveOption] = useState({...options[0]}) // should be default options
+    
     function setActiveOption(option : IOption, onValueChangeCall = true){
         activeOptionRef.current = {...option}
+        _setActiveOption({...option})
         if(onValueChange == null || !onValueChangeCall) return
         onValueChange(option)
     }
 
-    // register nRowsDefault
+    // register defaultOption
     useEffect(() => {
         if(defaultOption == null) return
         const _defaultOption = options.find(option => option.value == defaultOption)
-        // console.log(_defaultOption)
         if(_defaultOption != null ) setActiveOption(_defaultOption, false)
     }, [defaultOption])
 
@@ -64,7 +66,7 @@ function Select({ options, id, labelledBy, defaultOption, onValueChange, preset 
                 listbox : { isExpanded : isListboxExpanded, setAsExpanded : setListboxAsExpanded},
                 preset : preset || basePreset.get()
             }}>
-                <SelectComboBox/>
+                <ComboBox/>
                 <OptionsList/>
             </SelectContext.Provider>
         </div>

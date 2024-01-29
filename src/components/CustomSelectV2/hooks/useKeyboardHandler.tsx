@@ -3,7 +3,7 @@ import { useEffect, MutableRefObject } from 'react'
 import { /*IFormGroup,*/ IOption } from '../Select'
 
 export function useKeyboardHandler(
-    selectId : string,
+    id : string,
     /*formGroupState : {
         get : () => IFormGroup
         set : (state : IFormGroup) => void, 
@@ -25,7 +25,7 @@ export function useKeyboardHandler(
             if(e.code == "Escape" && isListboxExpanded()) {closeSelectOptions(e)}
 
             // when the right custom select is in focus
-            if(document.activeElement?.id == (selectId + "SelectLabel")){
+            if(document.activeElement?.id == id){
                 if(e.code == "Enter" || e.code == "NumpadEnter" || e.code == "Space") {
                     !isListboxExpanded() ? openSelectOptions(e) : closeSelectOptions(e)
                 }
