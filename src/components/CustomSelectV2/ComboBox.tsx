@@ -12,20 +12,18 @@ function SelectComboBox(){
 
     const [comboboxFocus, setComboboxFocus] = useState(false)
 
-    const {preset} = useContext(DatasTableContext)
-
-    const { selectId, activeOption, listbox } = useContext(SelectContext)
+    const { selectId, activeOption, listbox, preset } = useContext(SelectContext)
 
     const comboboxStyle = {
-        background: preset.selectEntriesPerPage.selectBackgroundColor , 
-        border: "1px solid "+ preset.selectEntriesPerPage.selectBorderColor.default,
-        color: preset.selectEntriesPerPage.selectTextColor
+        background: preset.selectBackgroundColor , 
+        border: "1px solid "+ preset.selectBorderColor.default,
+        color: preset.selectTextColor
     }
     const comboboxFocusStyle = {
-        background: preset.selectEntriesPerPage.selectBackgroundColor,
-        border:  "1px solid "+ preset.selectEntriesPerPage.selectBackgroundColor, 
-        outline: "1px solid "+ preset.selectEntriesPerPage.selectBorderColor.focus, 
-        color: preset.selectEntriesPerPage.selectTextColor
+        background: preset.selectBackgroundColor,
+        border:  "1px solid "+ preset.selectBackgroundColor, 
+        outline: "1px solid "+ preset.selectBorderColor.focus, 
+        color: preset.selectTextColor
     }
 
     return(
@@ -39,7 +37,7 @@ function SelectComboBox(){
             {activeOption.get().label}
             {/*<img alt="dropdown arrow" className={listbox.isExpanded ? "customSelectOpen" : "customSelectArrow"} src="./icons/select-arrow.svg"/>*/}
             <svg className={listbox.isExpanded ? "customSelectOpen" : "customSelectArrow"} width="16" height="11" viewBox="0 0 16 11" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M1.88 10.5466L8 4.43996L14.12 10.5466L16 8.66663L8 0.66663L1.64355e-07 8.66663L1.88 10.5466Z" fill={preset.selectEntriesPerPage.arrowColor}/>
+                <path d="M1.88 10.5466L8 4.43996L14.12 10.5466L16 8.66663L8 0.66663L1.64355e-07 8.66663L1.88 10.5466Z" fill={preset.arrowColor}/>
             </svg>
         </span>
     )

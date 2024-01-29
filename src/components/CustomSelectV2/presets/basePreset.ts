@@ -2,7 +2,7 @@ import SelectPresetClass from "./SelectPresetClass";
 
 /* eslint-disable @typescript-eslint/no-unused-vars */
 export const basePreset = new SelectPresetClass(
-    {
+    { // width
         labelTextColor: "#454545",
         selectBackgroundColor: "#f6f6f6",
         selectTextColor: "#454545",

@@ -6,6 +6,7 @@ import {useState, useRef, useEffect} from 'react'
 import { useKeyboardHandler } from './hooks/useKeyboardHandler'
 import { SelectContext } from './contexts/SelectContext'
 import { ISelectPreset } from './presets/ISelectPreset'
+import { basePreset } from './presets/basePreset'
 // import { DatasTableContext } from '../DatasTableContext'
 
 /**
@@ -60,7 +61,7 @@ function Select({ options, selectId, defaultOption, _onOptionChangeCallback, pre
             <SelectContext.Provider value={{
                 selectId, options, activeOption : {get :  () => activeOptionRef.current, set : setActiveOption}, 
                 listbox : { isExpanded : isListboxExpanded, setAsExpanded : setListboxAsExpanded},
-                preset : preset
+                preset : preset || basePreset.get()
             }}>
                 <SelectComboBox/>
                 <OptionsList/>

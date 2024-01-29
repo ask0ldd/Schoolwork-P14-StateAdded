@@ -2,7 +2,6 @@ import './style/OptionsList.css'
 import { useContext } from 'react'
 import Option from './Option'
 import { SelectContext } from './contexts/SelectContext'
-import { DatasTableContext } from '../DatasTableContext'
 
 /**
  * Component : The list of options displayed into the custom select.
@@ -11,9 +10,9 @@ import { DatasTableContext } from '../DatasTableContext'
  */
 function OptionsList(){
 
-    const { selectId, options, listbox } = useContext(SelectContext)
-    const {preset} = useContext(DatasTableContext)
-    const optionsContainerStyle = {background : preset.selectEntriesPerPage.optionsContainerBackgroundColor, border : '1px solid ' + preset.selectEntriesPerPage.optionsContainerBorderColor}
+    const { selectId, options, listbox, preset } = useContext(SelectContext)
+    
+    const optionsContainerStyle = {background : preset.optionsContainerBackgroundColor, border : '1px solid ' + preset.optionsContainerBorderColor}
 
     return(
         listbox.isExpanded ? 
