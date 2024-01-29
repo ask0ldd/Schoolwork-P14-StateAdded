@@ -9,12 +9,12 @@
   /*background: #0a0a12;*/
 }
 
-#entriesNSearchContainer,
+/*#entriesNSearchContainer,
 #infosNPaginationContainer {
   display: flex;
   justify-content: space-between;
   width: 100%;
-}
+}*/
 
 #entriesNSearchContainer {
   margin-bottom: 0.5rem;
