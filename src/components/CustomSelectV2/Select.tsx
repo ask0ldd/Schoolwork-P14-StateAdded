@@ -20,24 +20,25 @@ import { basePreset } from './presets/basePreset'
  * @param {function} props.onValueChange - Function triggered when selecting a new option.
  * @return ( <CustomSelect formGroupState={formGroupState} options={options} selectId={selectId} labelledBy={labelledBy} onValueChange={onValueChange}/> )
  */
-function Select({ options, id, labelledBy, defaultOption, _onOptionChangeCallback, preset } : IProps){ // should be able to pass the id of the element labelling the select
+function Select({ options, id, labelledBy, defaultOption, onValueChange, preset } : IProps){ // should be able to pass the id of the element labelling the select
 
     // const options = options // || [ {label : '10', value : '10'}, {label : '25', value : '25'}, {label : '50', value : '50'}, {label : '100', value : '100'}]
 
     // const {dispatch} = useContext(DatasTableContext)
 
     const activeOptionRef = useRef<IOption>({...options[0]})
-    function setActiveOption(option : IOption){
+    function setActiveOption(option : IOption, onValueChangeCall = true){
         activeOptionRef.current = {...option}
-        if(_onOptionChangeCallback == null) return
-        _onOptionChangeCallback(option)
+        if(onValueChange == null || !onValueChangeCall) return
+        onValueChange(option)
     }
 
     // register nRowsDefault
     useEffect(() => {
         if(defaultOption == null) return
-        const _defaultOption = options.find(option => parseInt(option.value) === defaultOption)
-        if(_defaultOption != null ) setActiveOption(_defaultOption)
+        const _defaultOption = options.find(option => option.value == defaultOption)
+        // console.log(_defaultOption)
+        if(_defaultOption != null ) setActiveOption(_defaultOption, false)
     }, [defaultOption])
 
     const [isListboxExpanded, _setListboxAsExpanded] = useState<boolean>(false)
@@ -82,7 +83,7 @@ interface IProps{
     options : Array<IOption>
     id : string
     labelledBy ?: string
-    defaultOption ?: number
-    _onOptionChangeCallback ?: (activeOption : IOption) => unknown
+    defaultOption ?: string
+    onValueChange ?: (activeOption : IOption) => unknown
     preset ?: ISelectPreset
 }

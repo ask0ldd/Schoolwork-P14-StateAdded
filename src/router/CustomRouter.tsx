@@ -4,6 +4,7 @@ import App from '../pages/NewEmployeeForm'
 import CurrentEmployees from '../pages/CurrentEmployees'
 import { Provider } from 'react-redux'
 import store from '../redux/store'
+import ComponentTestEnv from '../pages/ComponentTestEnv'
 
 /**
  * Component : Handling the routing logic of the app.
@@ -18,6 +19,7 @@ function CustomRouter() {
                 <Routes>
                     <Route path="/" element={<App />} />
                     <Route path="/employee-list" element={<CurrentEmployees />} />
+                    <Route path="/testenv" element={<ComponentTestEnv />} />
                 </Routes>
             </Router>
         </Provider>
