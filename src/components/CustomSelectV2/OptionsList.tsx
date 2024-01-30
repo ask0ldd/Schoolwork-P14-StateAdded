@@ -14,18 +14,9 @@ const OptionsList: React.FC<{ siblingRef: React.RefObject<HTMLSpanElement> }> = 
     
     const optionsContainerStyle = {background : preset.optionsContainerBackgroundColor, border : '1px solid ' + preset.optionsContainerBorderColor}
 
-    /*useEffect(() => {
-        return () => {
-            // Code to be executed on component unmount
-            console.log('optionslist : ' + id);
-            // (document.querySelector("#"+id) as HTMLElement).focus();
-            siblingRef.current?.focus()
-        }
-    }, [])*/
-
     return(
         listbox.isExpanded ? 
-        <ul style={optionsContainerStyle} onClick={(e) => {e.preventDefault();}} tabIndex={-1} id="customListbox" aria-labelledby="customSelectLabel" className="selectOptionsContainer" role="listbox">
+        <ul style={optionsContainerStyle} onClick={(e) => {e.preventDefault();/* siblingRef.current?.focus()*/}} tabIndex={-1} id="customListbox" aria-labelledby="customSelectLabel" className="selectOptionsContainer" role="listbox">
             {options.map((option, index) => <Option key={id+'-option-'+index} index={index} option={option}/>)}
         </ul> 
         : <></>

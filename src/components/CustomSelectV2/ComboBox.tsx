@@ -8,6 +8,7 @@ import { SelectContext } from './contexts/SelectContext'
  * @Component
  * @return ( <SelectComboBox/> )
  */
+// MEMO : forwardRef
 const ComboBox = forwardRef((_, ref : React.Ref<HTMLSpanElement>) => {
 
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
