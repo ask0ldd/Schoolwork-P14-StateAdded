@@ -1,4 +1,4 @@
-import {LegacyRef, useContext, useRef, useState} from 'react'
+import { RefObject, forwardRef, useContext, useState} from 'react'
 import './style/ComboBox.css'
 import { SelectContext } from './contexts/SelectContext'
 // import { DatasTableContext } from '../DatasTableContext'
@@ -8,14 +8,12 @@ import { SelectContext } from './contexts/SelectContext'
  * @Component
  * @return ( <SelectComboBox/> )
  */
-function ComboBox(){
+const ComboBox = forwardRef((_, ref : React.Ref<HTMLSpanElement>) => {
 
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const [_, setComboboxFocus] = useState(false) // just to force the refresh of the component when getting in or out focus
+    const [comboboxFocus, setComboboxFocus] = useState(false) // just to force the refresh of the component when getting in or out focus
 
     const { id, labelledBy, activeOption, listbox, preset } = useContext(SelectContext)
-
-    const comboSpan = useRef<HTMLSpanElement>(null)
 
     const comboboxStyle = {
         width: preset.width,
@@ -23,7 +21,7 @@ function ComboBox(){
         border: "1px solid "+ preset.selectBorderColor.default,
         color: preset.selectTextColor
     }
-    
+
     const comboboxFocusStyle = {
         width: preset.width,
         background: preset.selectBackgroundColor,
@@ -33,7 +31,7 @@ function ComboBox(){
     }
 
     return(
-        <span ref={comboSpan} style={/*comboboxFocus*/ document.activeElement?.getAttribute('id') === id ? comboboxFocusStyle : comboboxStyle} 
+        <span ref={ref as RefObject<HTMLSpanElement>} style={comboboxFocus ? comboboxFocusStyle : comboboxStyle} 
             onFocus={()=> {setComboboxFocus(true); console.log('focusin')}} onBlur={() => {listbox.setAsExpanded(false); setComboboxFocus(false); console.log('focusout')}} 
             onMouseDown={() => {listbox.setAsExpanded(!listbox.isExpanded)}} 
             tabIndex={0} aria-controls="customListbox" id={id} role="combobox" 
@@ -47,6 +45,6 @@ function ComboBox(){
             </svg>
         </span>
     )
-}
+})
 
 export default ComboBox

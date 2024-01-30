@@ -1,5 +1,5 @@
 import './style/OptionsList.css'
-import { useContext } from 'react'
+import { useContext, useEffect } from 'react'
 import Option from './Option'
 import { SelectContext } from './contexts/SelectContext'
 
@@ -8,7 +8,7 @@ import { SelectContext } from './contexts/SelectContext'
  * @Component
  * @return ( <OptionsList/> )
  */
-function OptionsList(){
+const OptionsList: React.FC<{ siblingRef: React.RefObject<HTMLSpanElement> }> = ({ siblingRef }) => {
 
     const { id, options, listbox, preset } = useContext(SelectContext)
     
@@ -17,8 +17,9 @@ function OptionsList(){
     /*useEffect(() => {
         return () => {
             // Code to be executed on component unmount
-            console.log(id);
-            (document.querySelector("#"+id) as HTMLElement).focus();
+            console.log('optionslist : ' + id);
+            // (document.querySelector("#"+id) as HTMLElement).focus();
+            siblingRef.current?.focus()
         }
     }, [])*/
 
