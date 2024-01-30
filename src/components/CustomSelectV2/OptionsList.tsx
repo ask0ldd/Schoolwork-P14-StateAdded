@@ -14,6 +14,14 @@ function OptionsList(){
     
     const optionsContainerStyle = {background : preset.optionsContainerBackgroundColor, border : '1px solid ' + preset.optionsContainerBorderColor}
 
+    /*useEffect(() => {
+        return () => {
+            // Code to be executed on component unmount
+            console.log(id);
+            (document.querySelector("#"+id) as HTMLElement).focus();
+        }
+    }, [])*/
+
     return(
         listbox.isExpanded ? 
         <ul style={optionsContainerStyle} onClick={(e) => {e.preventDefault();}} tabIndex={-1} id="customListbox" aria-labelledby="customSelectLabel" className="selectOptionsContainer" role="listbox">

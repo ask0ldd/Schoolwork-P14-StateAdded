@@ -10,7 +10,8 @@ import { SelectContext } from './contexts/SelectContext'
  */
 function ComboBox(){
 
-    // const [comboboxFocus, setComboboxFocus] = useState(false)
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const [_, setComboboxFocus] = useState(false) // just to force the refresh of the component when getting in or out focus
 
     const { id, labelledBy, activeOption, listbox, preset } = useContext(SelectContext)
 
@@ -22,6 +23,7 @@ function ComboBox(){
         border: "1px solid "+ preset.selectBorderColor.default,
         color: preset.selectTextColor
     }
+    
     const comboboxFocusStyle = {
         width: preset.width,
         background: preset.selectBackgroundColor,
@@ -31,8 +33,8 @@ function ComboBox(){
     }
 
     return(
-        <span ref={comboSpan} style={/*comboboxFocus*/ document.activeElement === comboSpan.current ? comboboxFocusStyle : comboboxStyle} 
-            onFocus={() => void 0/*()=> setComboboxFocus(true)*/} onBlur={() => {listbox.setAsExpanded(false); /*setComboboxFocus(false);*/}} 
+        <span ref={comboSpan} style={/*comboboxFocus*/ document.activeElement?.getAttribute('id') === id ? comboboxFocusStyle : comboboxStyle} 
+            onFocus={()=> {setComboboxFocus(true); console.log('focusin')}} onBlur={() => {listbox.setAsExpanded(false); setComboboxFocus(false); console.log('focusout')}} 
             onMouseDown={() => {listbox.setAsExpanded(!listbox.isExpanded)}} 
             tabIndex={0} aria-controls="customListbox" id={id} role="combobox" 
             aria-haspopup="listbox" aria-activedescendant={activeOption.get().value} aria-labelledby={labelledBy}
