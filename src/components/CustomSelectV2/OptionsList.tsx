@@ -16,7 +16,7 @@ function OptionsList(){
 
     return(
         listbox.isExpanded ? 
-        <ul style={optionsContainerStyle} onClick={(e) => {e.preventDefault(); console.log('listbox');}} tabIndex={-1} id="customListbox" aria-labelledby="customSelectLabel" className="selectOptionsContainer" role="listbox">
+        <ul style={optionsContainerStyle} onClick={(e) => {e.preventDefault();}} tabIndex={-1} id="customListbox" aria-labelledby="customSelectLabel" className="selectOptionsContainer" role="listbox">
             {options.map((option, index) => <Option key={id+'-option-'+index} index={index} option={option}/>)}
         </ul> 
         : <></>

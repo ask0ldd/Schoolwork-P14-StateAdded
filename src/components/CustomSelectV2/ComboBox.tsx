@@ -1,4 +1,4 @@
-import {useContext, useState} from 'react'
+import {LegacyRef, useContext, useRef, useState} from 'react'
 import './style/ComboBox.css'
 import { SelectContext } from './contexts/SelectContext'
 // import { DatasTableContext } from '../DatasTableContext'
@@ -10,9 +10,11 @@ import { SelectContext } from './contexts/SelectContext'
  */
 function ComboBox(){
 
-    const [comboboxFocus, setComboboxFocus] = useState(false)
+    // const [comboboxFocus, setComboboxFocus] = useState(false)
 
     const { id, labelledBy, activeOption, listbox, preset } = useContext(SelectContext)
+
+    const comboSpan = useRef<HTMLSpanElement>(null)
 
     const comboboxStyle = {
         width: preset.width,
@@ -29,8 +31,8 @@ function ComboBox(){
     }
 
     return(
-        <span style={comboboxFocus ? comboboxFocusStyle : comboboxStyle} 
-            onFocus={()=> setComboboxFocus(true)} onBlur={() => {listbox.setAsExpanded(false); setComboboxFocus(false)}} 
+        <span ref={comboSpan} style={/*comboboxFocus*/ document.activeElement === comboSpan.current ? comboboxFocusStyle : comboboxStyle} 
+            onFocus={() => void 0/*()=> setComboboxFocus(true)*/} onBlur={() => {listbox.setAsExpanded(false); /*setComboboxFocus(false);*/}} 
             onMouseDown={() => {listbox.setAsExpanded(!listbox.isExpanded)}} 
             tabIndex={0} aria-controls="customListbox" id={id} role="combobox" 
             aria-haspopup="listbox" aria-activedescendant={activeOption.get().value} aria-labelledby={labelledBy}
