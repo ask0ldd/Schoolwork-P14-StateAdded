@@ -22,7 +22,7 @@ function ComponentTestEnv(){
             <Header pageTitle='Create Employee'/>
             <main style={{paddingTop:'1rem'}}>
 
-            <Select id="test" options={options} onValueChange={callback} defaultOption={'item3'}/>
+            <Select id="test" options={options} onValueChange={callback} defaultOption={'item3'} width={300}/>
             
             </main>
             <Footer/>

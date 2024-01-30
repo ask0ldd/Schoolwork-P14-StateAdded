@@ -14,6 +14,11 @@ class SelectPresetClass {
         return this.#preset
     }
 
+    setWidth(width : number | string){
+        if(typeof width === "number") this.#preset.width = width.toString()
+        if(typeof width === "string") this.#preset.width = width
+    }
+
 }
 
 export default SelectPresetClass

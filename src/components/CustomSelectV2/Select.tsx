@@ -21,9 +21,13 @@ import { basePreset } from './presets/basePreset'
  * @param {function} props.onValueChange - Function triggered when selecting a new option.
  * @return ( <Select formGroupState={formGroupState} options={options} selectId={selectId} labelledBy={labelledBy} onValueChange={onValueChange}/> )
  */
-function Select({ options, id, labelledBy, defaultOption, onValueChange, preset } : IProps){ // should be able to pass the id of the element labelling the select
+function Select({ options, id, labelledBy, defaultOption, onValueChange, preset, width } : IProps){ // should be able to pass the id of the element labelling the select
 
     // !!! should verify no duplicates in options
+
+    const currentPreset = preset == null ? basePreset.get() : preset
+    if(typeof width === "number") currentPreset.width = width.toString()+'px'
+    if(typeof width === "string") currentPreset.width = width
 
     const activeOptionRef = useRef<IOption>({...options[0]}) // should be default options
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -64,7 +68,7 @@ function Select({ options, id, labelledBy, defaultOption, onValueChange, preset 
             <SelectContext.Provider value={{
                 id, labelledBy : labelledBy || '', options, activeOption : {get :  () => activeOptionRef.current, set : setActiveOption}, 
                 listbox : { isExpanded : isListboxExpanded, setAsExpanded : setListboxAsExpanded},
-                preset : preset || basePreset.get()
+                preset : currentPreset
             }}>
                 <ComboBox/>
                 <OptionsList/>
@@ -88,4 +92,5 @@ interface IProps{
     defaultOption ?: string
     onValueChange ?: (activeOption : IOption) => unknown
     preset ?: ISelectPreset
+    width ?: string | number
 }

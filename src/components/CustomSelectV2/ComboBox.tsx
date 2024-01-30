@@ -15,11 +15,13 @@ function ComboBox(){
     const { id, labelledBy, activeOption, listbox, preset } = useContext(SelectContext)
 
     const comboboxStyle = {
+        width: preset.width,
         background: preset.selectBackgroundColor , 
         border: "1px solid "+ preset.selectBorderColor.default,
         color: preset.selectTextColor
     }
     const comboboxFocusStyle = {
+        width: preset.width,
         background: preset.selectBackgroundColor,
         border:  "1px solid "+ preset.selectBackgroundColor, 
         outline: "1px solid "+ preset.selectBorderColor.focus, 
