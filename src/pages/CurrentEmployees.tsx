@@ -41,7 +41,7 @@ function CurrentEmployees() {
       <main className='mainCE'>
         <DatasTable 
           tableModel={tableModel} tableDatas={employeesList} preset={
-          basePreset/*.setHoveredElementsStyle({textColor: "#FFFFFF", background:'#FF0000'})
+          basePreset.setRowTopPadding('1rem')/*.setHoveredElementsStyle({textColor: "#FFFFFF", background:'#FF0000'})
           .setOddRowsStyle({background:'#dddddd', separatorColor: '#aaaaaa', textColor : "blue"})*/
           .get()} 
           nRowsDefault={25}
