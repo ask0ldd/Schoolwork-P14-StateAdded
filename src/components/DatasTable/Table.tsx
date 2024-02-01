@@ -14,7 +14,7 @@ import TAlignment from "./types/TAlignment"
 function Table() {
 
   const { tableState, dispatch, tableModel, preset } = useContext(DatasTableContext)
-  const [hoverTR, setHoverTR] = useState(-1)
+  const [ hoverTR, setHoverTR ] = useState(-1)
 
   if (!dispatch || !tableState || !tableModel || tableState.tableDAO.getProcessedDatas(tableState.getProcessingParameters()).length === 0)
     return (<>No data available in table.</>)
@@ -24,32 +24,30 @@ function Table() {
   const rowsToDisplay = getRowsToDisplay()
 
   // defining elements styles
-  const thPreset = { color: preset.th.textColor, background: preset.th.backgroundColor, fontWeight: preset.th.fontWeight, textAlign: preset.th.textAlign }
-  const oddRowPreset = { color: preset.oddRow.textColor.default, background: preset.oddRow.backgroundColor.default, borderBottom: '1px solid ' + preset.oddRow.bottomSeparatorColor }
-  const evenRowPreset = { color: preset.evenRow.textColor.default, background: preset.evenRow.backgroundColor.default, borderBottom: '1px solid ' + preset.evenRow.bottomSeparatorColor }
+  const globalStyle = { background: preset.global.backgroundColor, fontFamily: preset.global.font, color: preset.global.textColor }
+  const thStyle = { color: preset.th.textColor, background: preset.th.backgroundColor, fontWeight: preset.th.fontWeight, textAlign: preset.th.textAlign }
+  const oddRowStyle = { color: preset.oddRow.textColor.default, background: preset.oddRow.backgroundColor.default, borderBottom: '1px solid ' + preset.oddRow.bottomSeparatorColor }
+  const evenRowStyle = { color: preset.evenRow.textColor.default, background: preset.evenRow.backgroundColor.default, borderBottom: '1px solid ' + preset.evenRow.bottomSeparatorColor }
   const arrowInactiveColor = { color: preset.th.arrow.inactiveColor }
   const arrowActiveColor = { color: preset.th.arrow.activeColor }
   const topSeparatorColor = { borderBottom: '1px solid ' + preset.firstnLastRowSeparatorsColor }
   const hoverRowStyle = { background: preset.evenRow.backgroundColor.hover, borderBottom: '1px solid ' + preset.evenRow.backgroundColor.hover, color: preset.evenRow.textColor.hover }
-  // 10px 18px 10px 18px
-  console.log(preset.row.paddingTop)
-  console.log(preset.row.paddingBottom)
   const tdPadding = { /*display: 'flex', alignItems: 'center',*/ padding: (10 + parseInt(preset.row.paddingTop) + 'px ') + "18px " + (10 + parseInt(preset.row.paddingBottom) + 'px ') + '18px' }
 
   return (
-    <table style={preset.global ? { background: preset.global.backgroundColor, fontFamily: preset.global.font, color: preset.global.textColor } : {}} id={tableModel.getTableId()} aria-label="Current Employees">
+    <table style={preset.global ? globalStyle : {}} id={tableModel.getTableId()} aria-label="Current Employees">
       
       <thead style={topSeparatorColor}>
-        <tr style={{ background: thPreset.background, border: 'none' }}>
+        <tr style={{ background: thStyle.background, border: 'none' }}>
           {tableModel.getColumnsNamesList().map((name, index) => (
             <th key={'thtable-' + index}
               // different paddings if th must host the arrows
               style={{
-                ...thPreset, cursor: 'pointer',
+                ...thStyle, cursor: 'pointer',
                 padding: tableModel.getColumns()[index].sortable ? '10px 36px 10px 18px' : '10px 18px 10px 18px',
                 textAlign: tableModel.getColumns()[index].thAlignment != null && tableModel.getColumns()[index].thAlignment != 'preset' ?
                   tableModel.getColumns()[index].thAlignment as TAlignment :
-                  thPreset.textAlign
+                  thStyle.textAlign
               }}
               onClick={() => { handleSortingClick(index) }}>{name}
               {
@@ -73,8 +71,8 @@ function Table() {
           <tr onMouseOut={() => setHoverTR(-1)} onMouseEnter={() => setHoverTR(index)}
             style={hoverTR === index ? hoverRowStyle
               : {
-                ...isRowOdd(index) ? oddRowPreset : evenRowPreset,
-                borderBottom: isLastRow(index, rowsToDisplay.length - 1) ? 'none' : (isRowOdd(index) ? oddRowPreset.borderBottom : evenRowPreset.borderBottom)
+                ...isRowOdd(index) ? oddRowStyle : evenRowStyle,
+                borderBottom: isLastRow(index, rowsToDisplay.length - 1) ? 'none' : (isRowOdd(index) ? oddRowStyle.borderBottom : evenRowStyle.borderBottom)
               }}
             key={'trtable-' + index} className={isRowOdd(index) + isLastRow(index, rowsToDisplay.length - 1)}>
             {
