@@ -126,20 +126,37 @@ export function useKeyboardHandler(
         return activeIndex
     }
 
+    /**
+     * Closes the select options.
+     * @param {KeyboardEvent} e - The keyboard event.
+     */
     function closeSelectOptions(e : KeyboardEvent){
         e.preventDefault()
         if(isListboxExpandedRef.current === true ) setListboxAsExpanded(false)
     }
 
+    /**
+     * Opens the select options.
+     * @param {KeyboardEvent} e - The keyboard event.
+     */
     function openSelectOptions(e : KeyboardEvent){
         e.preventDefault()
         setListboxAsExpanded(true)
     }
 
+    /**
+     * Checks if the listbox is expanded.
+     * @returns {boolean} - True if the listbox is expanded, false otherwise.
+     */
     function isListboxExpanded(){
         return isListboxExpandedRef.current === true
     }
 
+    /**
+     * Checks if a character is fast selectable.
+     * @param {string} key - The character to be checked.
+     * @returns {boolean} - True if the character is fast selectable, false otherwise.
+     */
     function isCharacterFastSelectable(key : string) : boolean{
         const numbersNLettersList = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
         return numbersNLettersList.includes(key.toLowerCase())
