@@ -79,28 +79,49 @@ export function useKeyboardHandler(
 
     }, [/*formGroupState*/]) // n/a : each time formGroupState is changing, the event listener is remounted with formstate new value => without that accessing formstate return a blank stale state
 
+    /**
+     * Set the first option as active.
+     * @param {KeyboardEvent} e - The keyboard event.
+     */
     function setFirstOptionActive(e : KeyboardEvent){
         e.preventDefault()
         setActiveOption(options[0])
     }
 
+    /**
+     * Set the last option as active.
+     * @param {KeyboardEvent} e - The keyboard event.
+     */
     function setLastOptionActive(e : KeyboardEvent){
         e.preventDefault()
         setActiveOption(options[options.length-1])
     }
 
+    /**
+     * Set the option that is ten positions before the active option as active.
+     * @param {KeyboardEvent} e - The keyboard event.
+     */
     function setMinusTenOptionActive(e : KeyboardEvent){
         e.preventDefault()
         const activeOptionIndex = getActiveOptionIndex(activeOptionRef)
         options[activeOptionIndex - 10] != null ? setActiveOption(options[activeOptionIndex - 10]) : setFirstOptionActive(e)
     }
 
+    /**
+     * Set the option at an index that is 10 positions ahead of the currently active option as the active option.
+     * @param {KeyboardEvent} e - The keyboard event.
+     */
     function setPlusTenOptionActive(e : KeyboardEvent){
         e.preventDefault()
         const activeOptionIndex = getActiveOptionIndex(activeOptionRef)
         options[activeOptionIndex + 10] != null ? setActiveOption(options[activeOptionIndex + 10]) : setLastOptionActive(e)
     }
 
+    /**
+     * Set the previous option as the active option.
+     * @param {KeyboardEvent} e - The keyboard event.
+     * @returns {boolean} - False if the previous option index is less than 0, otherwise true.
+     */
     function setPrevOptionActive(e : KeyboardEvent){
         e.preventDefault()
         const prevOptionIndex = getActiveOptionIndex(activeOptionRef)-1
@@ -108,6 +129,11 @@ export function useKeyboardHandler(
         setActiveOption(options[prevOptionIndex])
     }
 
+    /**
+     * Set the next option as the active option.
+     * @param {KeyboardEvent} e - The keyboard event.
+     * @returns {boolean} - False if the next option index is greater than the length of options minus 1, otherwise true.
+     */
     function setNextOptionActive(e : KeyboardEvent){
         e.preventDefault()
         const nextOptionIndex = getActiveOptionIndex(activeOptionRef)+1
@@ -115,6 +141,11 @@ export function useKeyboardHandler(
         setActiveOption(options[nextOptionIndex])
     }
   
+    /**
+     * Get the index of the active option.
+     * @param {MutableRefObject<IOption>} activeOption - The reference to the active option.
+     * @returns {number} - The index of the active option.
+     */
     function getActiveOptionIndex(activeOption : MutableRefObject<IOption>) : number{
         let activeIndex = 0
         for(let index = 0; index < options.length; index++){
