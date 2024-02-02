@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import { useContext } from 'react'
 import TAlignment from './types/TAlignment'
 import { DatasTableContext } from './DatasTableContext'
 
@@ -17,7 +17,7 @@ export default function TableHead() {
     const tableAccessors = tableModel.getAccessorsList()
 
     return (
-        <thead style={topSeparatorColor}>
+        <thead style={{...topSeparatorColor, width:'100%'}}>
             <tr style={{ background: thStyle.background, border: 'none' }}>
                 {tableModel.getColumnsNamesList().map((name, index) => (
                     <th key={'thtable-' + index}

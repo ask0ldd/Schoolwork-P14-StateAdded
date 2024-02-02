@@ -19,7 +19,7 @@ export default function TableBody() {
     return (<>No data available in table.</>)
 
     return (
-        <tbody style={topSeparatorColor}>
+        <tbody style={{...topSeparatorColor, width:'100%'}}>
             {rowsToDisplay.map((datarow, index) => (
                 <tr onMouseOut={() => setHoverTR(-1)} onMouseEnter={() => setHoverTR(index)}
                     style={hoverTR === index ? hoverRowStyle
